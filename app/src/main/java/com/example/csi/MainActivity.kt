@@ -10,11 +10,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // CSI Application
-    //lolololol
-//hswudgwud
- //kdjiehdi
-// hlo guys
-    //added from branch ankit
+
 
 
 }
