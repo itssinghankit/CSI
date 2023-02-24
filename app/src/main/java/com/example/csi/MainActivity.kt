@@ -9,8 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    // CSI Application
-//final commit
-//hennji
+
 
 }
