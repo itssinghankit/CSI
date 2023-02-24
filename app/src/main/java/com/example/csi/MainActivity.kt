@@ -10,10 +10,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     // CSI Application
-    // Team project
-    // commits
-    //hellojj
-    //how
-    //are
+
 
 }
