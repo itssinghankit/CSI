@@ -15,6 +15,5 @@ class MainActivity : AppCompatActivity() {
     //ggghg
 
     //hlo guys
-    //hhgh
 
 }
