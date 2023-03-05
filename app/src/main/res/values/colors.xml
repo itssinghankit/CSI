@@ -17,5 +17,7 @@
     <color name="black">#0f0f0f</color>
     <color name="darkblue">#003399</color>
     <color name="blue">#226CFF</color>
+    <color name="lightblue">#BED4FF</color>
     <color name="txtblackbg">#f2f2f2</color>
+    <color name="outlineblue">#6EA5E7</color>
 </resources>
