@@ -52,7 +52,7 @@
             android:id="@+id/domainsrecylerview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_25sdp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/blueLine"
             tools:listitem="@layout/domain_recycler" />
