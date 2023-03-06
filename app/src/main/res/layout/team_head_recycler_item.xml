@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_150sdp"
+    android:layout_height="@dimen/_150sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="8dp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardUseCompatPadding="true"
+        app:strokeColor="@color/outlineblue"
+        app:strokeWidth="2dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_54sdp"
+                android:layout_height="@dimen/_54sdp"
+                android:id="@+id/personImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="@dimen/_27sdp"
+                android:layout_marginTop="@dimen/_12sdp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fakeimage"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/personName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Ankit Singh"
+                android:textSize="@dimen/_14ssp"
+                android:maxLines="1"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:capitalize="words"
+                android:fontFamily="@font/montserrat_semibold"
+                app:layout_constraintTop_toBottomOf="@id/personImage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="APP DEVELOPER"
+                android:textAllCaps="true"
+                android:id="@+id/personDomain"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:textColor="@color/darkblue"
+                android:textSize="@dimen/_8ssp"
+                android:fontFamily="@font/montserrat_semibold"
+                app:layout_constraintTop_toBottomOf="@id/personName"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

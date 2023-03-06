@@ -12,7 +12,7 @@
     <item
         android:id="@+id/teamFragment"
         android:icon="@drawable/baseline_team_24"
-        android:title="Team"/>
+        android:title="Team" />
     <item
         android:id="@+id/communityFragment"
         android:icon="@drawable/baseline_community_24"

@@ -12,11 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_9sdp"
-        android:layout_marginTop="@dimen/_19sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:fontFamily="@font/montserrat_semibold"
         android:text="COMPUTER SOCIETY OF INDIA"
         android:textColor="@color/darkblue"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_12ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,14 +28,14 @@
         android:fontFamily="@font/montserrat_semibold"
         android:text="- AKGEC CHAPTER"
         android:textColor="@color/blue"
-        android:textSize="@dimen/_11ssp"
+        android:textSize="@dimen/_9ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/uppertxt" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_11sdp"
+        android:id="@+id/csilogo"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_marginEnd="@dimen/_9sdp"
         android:src="@drawable/csi_logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,11 +45,8 @@
         android:id="@+id/uprline"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_marginStart="@dimen/_9sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
         android:background="@color/linecolor"
-        app:layout_constraintTop_toBottomOf="@id/lwrtxt" />
+        app:layout_constraintTop_toBottomOf="@id/csilogo" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -71,8 +68,7 @@
                 android:layout_marginTop="@dimen/_25sdp"
                 android:fontFamily="@font/montserrat_semibold"
                 android:lineHeight="@dimen/_24sdp"
-                android:text="Lorem ipsum dolor sit amet,\n
-consectetur "
+                android:text="Lorem ipsum dolor sit amet,\nconsectetur "
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16ssp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,13 +76,12 @@ consectetur "
 
             <ImageView
                 android:id="@+id/globe"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_150sdp"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_130sdp"
                 android:src="@drawable/globe"
                 android:layout_marginTop="-30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/maintxtheading" />
-
+                app:layout_constraintTop_toBottomOf="@id/maintxtheading"/>
             <TextView
                 android:id="@+id/maintxt"
                 android:layout_width="0dp"
@@ -95,7 +90,7 @@ consectetur "
                 android:layout_marginTop="@dimen/_6sdp"
                 android:fontFamily="@font/montserrat_regular"
                 android:text="Color sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 android:textColor="@color/txtgrey"
                 app:layout_constraintEnd_toStartOf="@id/globe"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +101,7 @@ consectetur "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_49sdp"
+                android:layout_marginTop="@dimen/_31sdp"
                 android:fontFamily="@font/montserrat_semibold"
                 android:lineHeight="@dimen/_24sdp"
                 android:text="Events and Workshop"
@@ -125,6 +120,59 @@ consectetur "
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:paddingStart="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/aboutustxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_31sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="About Us"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventsRecyclerView" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/aboutUsImageContainer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
+                app:cardCornerRadius="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginEnd="@dimen/_9sdp"
+                app:cardElevation="8dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintTop_toBottomOf="@id/aboutustxt">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/aboutus"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/aboutUstxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_18sdp"
+                android:layout_marginEnd="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Color  sit amet Lorem  sit amet Lorem  sit amet Lorem ipsum dolor sit amet  sit amet Lorem ipsum dolor sit amet sit amet Lorem ipsum dolor sit amet sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit amet"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/txtgrey"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:maxLines="10"
+                android:ellipsize="end"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aboutUsImageContainer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/_49sdp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
