@@ -1,21 +1,23 @@
 package com.example.csi.Adapters
-
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.csi.R
-import com.example.csi.modelclasses.HomeEvents
+import com.example.csi.modelclasses.Domains
 
-class EventsAdapter(val arrayList: ArrayList<HomeEvents>): RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
+
+
+class DomainsAdapter(val arrayList: ArrayList<Domains>): RecyclerView.Adapter<DomainsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val eventName=itemView.findViewById<TextView>(R.id.eventName)
-        val description=itemView.findViewById<TextView>(R.id.domdescription)
+        val DomainsName=itemView.findViewById<TextView>(R.id.domainName)
+        val domdescription=itemView.findViewById<TextView>(R.id.domdescription)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view=LayoutInflater.from(parent.context).inflate(R.layout.events_recycler_items,parent,false)
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.domain_recycler,parent,false)
         val viewHolder=ViewHolder(view)
         return viewHolder
 
@@ -26,8 +28,8 @@ class EventsAdapter(val arrayList: ArrayList<HomeEvents>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.eventName.text=arrayList[position].eventName
-        holder.description.text=arrayList[position].description
+        holder.DomainsName.text=arrayList[position].DomainsName
+        holder.domdescription.text=arrayList[position].domdescription
 
     }
 
