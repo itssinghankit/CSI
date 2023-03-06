@@ -40,8 +40,8 @@
         android:layout_marginEnd="@dimen/_37sdp"/>
 
     <ScrollView
-        android:layout_width="402dp"
-        android:layout_height="596dp"
+        android:layout_width="@dimen/_309sdp"
+        android:layout_height="@dimen/_458sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
