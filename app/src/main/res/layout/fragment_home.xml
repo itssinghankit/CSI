@@ -44,8 +44,8 @@
     <View
         android:id="@+id/uprline"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/linecolor"
+        android:layout_height="1dp"
+        android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/csilogo" />
 
     <ScrollView
@@ -54,61 +54,111 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/uprline">
+        app:layout_constraintTop_toTopOf="@id/uprline"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/constraint"
+            >
 
             <TextView
-                android:id="@+id/maintxtheading"
+                android:id="@+id/createtxt_C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginStart="@dimen/_31sdp"
+                android:layout_marginTop="@dimen/_31sdp"
                 android:fontFamily="@font/montserrat_semibold"
                 android:lineHeight="@dimen/_24sdp"
-                android:text="Lorem ipsum dolor sit amet,\nconsectetur "
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16ssp"
+                android:text="C"
+                android:textColor="@color/darkblue"
+                android:textSize="@dimen/_37ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/createtxtRete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="REATE"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintStart_toEndOf="@id/createtxt_C"
+                app:layout_constraintBottom_toBottomOf="@id/createtxt_C"
+                />
+            <TextView
+                android:id="@+id/sharetxt_S"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_37sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="S"
+                android:textColor="@color/darkblue"
+                android:textSize="@dimen/_37ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/createtxtRete" />
+            <TextView
+                android:id="@+id/sharetxthare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="HARE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                app:layout_constraintStart_toEndOf="@id/sharetxt_S"
+                app:layout_constraintBottom_toBottomOf="@id/sharetxt_S"
+                />
+            <TextView
+                android:id="@+id/Innovatetxt_I"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_37sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:lineHeight="@dimen/_24sdp"
+                android:text="I"
+                android:textColor="@color/darkblue"
+                android:textSize="@dimen/_37ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sharetxthare" />
+            <TextView
+                android:id="@+id/innovatetxt_nnovate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:lineHeight="@dimen/_24sdp"
+                android:text="NNOVATE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                app:layout_constraintStart_toEndOf="@id/Innovatetxt_I"
+                app:layout_constraintBottom_toBottomOf="@id/Innovatetxt_I"
+                />
 
             <ImageView
                 android:id="@+id/globe"
                 android:layout_width="@dimen/_130sdp"
                 android:layout_height="@dimen/_130sdp"
                 android:src="@drawable/globe"
-                android:layout_marginTop="-30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/maintxtheading"/>
-            <TextView
-                android:id="@+id/maintxt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_18sdp"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:fontFamily="@font/montserrat_regular"
-                android:text="Color sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet"
-                android:textSize="@dimen/_12ssp"
-                android:textColor="@color/txtgrey"
-                app:layout_constraintEnd_toStartOf="@id/globe"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/maintxtheading" />
+                app:layout_constraintTop_toTopOf="@id/constraint"
+                android:layout_marginTop="@dimen/_31sdp"/>
 
             <TextView
                 android:id="@+id/eventstxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_9sdp"
-                android:layout_marginTop="@dimen/_31sdp"
+                android:layout_marginTop="@dimen/_37sdp"
                 android:fontFamily="@font/montserrat_semibold"
                 android:lineHeight="@dimen/_24sdp"
                 android:text="Events and Workshop"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_14ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/maintxt" />
+                app:layout_constraintTop_toBottomOf="@id/innovatetxt_nnovate" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/eventsRecyclerView"
@@ -130,7 +180,7 @@
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="About Us"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_14ssp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/eventsRecyclerView" />
 
