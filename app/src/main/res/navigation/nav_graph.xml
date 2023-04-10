@@ -11,11 +11,6 @@
         android:label="fragment_community"
         tools:layout="@layout/fragment_community" />
     <fragment
-        android:id="@+id/domainsFragment"
-        android:name="com.example.csi.fragments.DomainsFragment"
-        android:label="fragment_domains"
-        tools:layout="@layout/fragment_domains" />
-    <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.csi.fragments.HomeFragment"
         android:label="fragment_home"
@@ -30,4 +25,9 @@
         android:name="com.example.csi.fragments.TeamFragment"
         android:label="fragment_team"
         tools:layout="@layout/fragment_team" />
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.example.csi.fragments.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" />
 </navigation>
