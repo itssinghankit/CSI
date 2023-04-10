@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AchievementFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.AchievementFragment"
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/csilogo"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginEnd="@dimen/_9sdp"
+        android:src="@drawable/csi_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/blueLine"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/_20sdp"
+        android:background="@color/darkblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/csilogo"
+        android:layout_marginTop="@dimen/_9sdp"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Achievements "
+        android:textSize="@dimen/_16ssp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/blueLine"
+        app:layout_constraintEnd_toEndOf="@id/blueLine"
+        android:textColor="@color/darkblue"
+        android:fontFamily="@font/montserrat_semibold"
+        android:layout_marginEnd="@dimen/_37sdp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/AchievementRecyclerview"
+        app:layout_constraintTop_toBottomOf="@id/blueLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/achievement_first_recycler_item"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
