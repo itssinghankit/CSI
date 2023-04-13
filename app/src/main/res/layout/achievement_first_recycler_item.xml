@@ -67,7 +67,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/montserrat_semibold"
             android:maxLines="3"
-            android:text="Smart  India Hackathon"
+            android:text="Super aSmart India Hackathon"
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toTopOf="@+id/imgContainer"
