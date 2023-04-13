@@ -6,10 +6,6 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Home"/>
     <item
-        android:id="@+id/domainsFragment"
-        android:icon="@drawable/baseline_domain_24"
-        android:title="Domains"/>
-    <item
         android:id="@+id/teamFragment"
         android:icon="@drawable/baseline_team_24"
         android:title="Team" />
@@ -17,6 +13,10 @@
         android:id="@+id/communityFragment"
         android:icon="@drawable/baseline_community_24"
         android:title="Community"/>
+    <item
+        android:id="@+id/achievementFragment"
+        android:icon="@drawable/baseline_achievement_24"
+        android:title="Achievement"/>
     <item
         android:id="@+id/moreFragment"
         android:icon="@drawable/baseline_more_24"
