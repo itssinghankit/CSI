@@ -40,7 +40,7 @@ class DomainsFragment : Fragment() {
        bindings.domainsrecylerview.adapter= DomainsAdapter(DomainsArrayList)
         return bindings.root
     }
-
+//lol
 }
 
 
