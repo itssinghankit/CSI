@@ -73,7 +73,7 @@ class AchievementAdapter(val arraylist:ArrayList<AchievementDataClass>):Recycler
         }
     }
 
-    //view holders
+    //View Holders
     class FirstViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
         val circleNo=itemView.findViewById<TextView>(R.id.circleNo)
