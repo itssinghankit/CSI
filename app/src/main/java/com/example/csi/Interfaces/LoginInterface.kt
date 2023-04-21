@@ -9,5 +9,6 @@ import retrofit2.http.POST
 
 interface LoginInterface {
     @POST("accounts/login/")
-    fun sendData(@Body data:LoginDataClass):Call<LoginResponseDataClass> //response
+    fun sendData(@Body data:LoginDataClass):Call<LoginResponseDataClass> // response
+
 }
