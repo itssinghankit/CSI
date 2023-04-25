@@ -42,7 +42,5 @@ binding.button.setOnClickListener {
 }
 
 
-
-
     }
 }

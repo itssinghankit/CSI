@@ -1,14 +1,18 @@
 package com.example.csi.Adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.csi.R
 import com.example.csi.modelclasses.AchievementDataClass
+import com.example.csi.modelclasses.AchievementsDataClassItem
 
-class AchievementAdapter(val arraylist:ArrayList<AchievementDataClass>):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AchievementAdapter(val arraylist:List<AchievementsDataClassItem>,val context: Context):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object{
         private const val FIRST_TYPE=0
@@ -41,6 +45,7 @@ class AchievementAdapter(val arraylist:ArrayList<AchievementDataClass>):Recycler
             LAST_LEFT_TYPE ->LastLeftViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.achievement_last_left_recycleritem,parent,false))
             LAST_RIGHT_TYPE ->LastRightViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.achievement_last_right_recycleritem,parent,false))
             else -> throw java.lang.IllegalArgumentException("Error in CreateViewHolder")
+
         }
     }
 
@@ -49,25 +54,31 @@ class AchievementAdapter(val arraylist:ArrayList<AchievementDataClass>):Recycler
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
         when(holder){
             is FirstViewHolder ->{
-                holder.achievementName.text=arraylist[position].achievementname.toString()
+                holder.achievementName.text=arraylist[position].venue.toString()
+                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
            is CenterLeftViewHolder ->{
-               holder.achievementName.text=arraylist[position].achievementname.toString()
+               holder.achievementName.text=arraylist[position].venue.toString()
+               Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                holder.circleNo.text=(position+1).toString()
            }
             is CenterRightViewHolder ->{
-                holder.achievementName.text=arraylist[position].achievementname.toString()
+                holder.achievementName.text=arraylist[position].venue.toString()
+                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
             is LastLeftViewHolder ->{
-                holder.achievementName.text=arraylist[position].achievementname.toString()
+                holder.achievementName.text=arraylist[position].venue.toString()
+                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
             is LastRightViewHolder ->{
-                holder.achievementName.text=arraylist[position].achievementname.toString()
+                holder.achievementName.text=arraylist[position].venue.toString()
+                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
         }
@@ -76,22 +87,27 @@ class AchievementAdapter(val arraylist:ArrayList<AchievementDataClass>):Recycler
     //View Holders
     class FirstViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
+        val achievementImg=itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo=itemView.findViewById<TextView>(R.id.circleNo)
     }
     class CenterLeftViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
+        val achievementImg=itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo =itemView.findViewById<TextView>(R.id.circleNo)
     }
     class CenterRightViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
+        val achievementImg=itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo=itemView.findViewById<TextView>(R.id.circleNo)
     }
     class LastLeftViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
+        val achievementImg=itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo=itemView.findViewById<TextView>(R.id.circleNo)
     }
     class LastRightViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
+        val achievementImg=itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo=itemView.findViewById<TextView>(R.id.circleNo)
     }
 
