@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/_210sdp"
     android:layout_height="@dimen/_220sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,14 +10,12 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardElevation="4dp"
+        android:background="@color/white"
         app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white"
         app:strokeColor="@color/outlineblue"
         app:strokeWidth="2dp">
 
@@ -29,10 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_110sdp"
                 app:cardCornerRadius="@dimen/_4sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:cardElevation="8dp"
                 app:cardUseCompatPadding="true"
-                >
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardElevation="8dp">
 
                 <ImageView
                     android:id="@+id/image"
@@ -45,15 +44,15 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/eventName"
+                android:id="@+id/domainName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:fontFamily="@font/montserrat_semibold"
-                android:text="Event name"
-                android:maxLines="1"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:ellipsize="end"
+                android:fontFamily="@font/montserrat_semibold"
+                android:maxLines="1"
+                android:text="App Development"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,19 +62,22 @@
                 android:id="@+id/domdescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:ellipsize="end"
                 android:fontFamily="@font/montserrat_regular"
                 android:maxLines="5"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
                 android:text="welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and  . this is the best way to book your app so book your hotel"
                 android:textColor="@color/txtgrey"
                 android:textSize="@dimen/_9ssp"
-                app:layout_constraintTop_toBottomOf="@id/eventName" />
+                app:layout_constraintTop_toBottomOf="@id/domainName" />
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:layout_width="@dimen/_210sdp"
+                android:layout_height="@dimen/_220sdp"
+                tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </com.google.android.material.card.MaterialCardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

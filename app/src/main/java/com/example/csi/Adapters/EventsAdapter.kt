@@ -1,6 +1,5 @@
 package com.example.csi.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.example.csi.modelclasses.HomeEvents
 class EventsAdapter(val arrayList: ArrayList<HomeEvents>): RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val eventName=itemView.findViewById<TextView>(R.id.eventName)
-        val description=itemView.findViewById<TextView>(R.id.description)
+        val description=itemView.findViewById<TextView>(R.id.domdescription)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

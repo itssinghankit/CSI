@@ -172,6 +172,32 @@
                 tools:listitem="@layout/events_recycler_items" />
 
             <TextView
+                android:id="@+id/domainstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_37sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:lineHeight="@dimen/_24sdp"
+                android:text="Domains"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventsRecyclerView" />
+
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:id="@+id/domainsrecylerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_10sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/domainstxt"
+                tools:listitem="@layout/domain_recycler" />
+
+
+            <TextView
                 android:id="@+id/aboutustxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -182,7 +208,7 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/eventsRecyclerView" />
+                app:layout_constraintTop_toBottomOf="@id/domainsrecylerview" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/aboutUsImageContainer"
