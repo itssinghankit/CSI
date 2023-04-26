@@ -30,7 +30,15 @@ private lateinit var headArrayList: ArrayList<TeamMemberDataClass>
         headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
 
         binding.teamHeadRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        binding.teamHeadRecyclerView.adapter=TeamFouthHeadRecyclerAdapter(headArrayList)
+
+        binding.apply {
+            teamHeadRecyclerView.adapter= TeamFouthHeadRecyclerAdapter(headArrayList)
+            teamHeadRecyclerView.set3DItem(true)
+            teamHeadRecyclerView.setAlpha(true)
+            teamHeadRecyclerView.setInfinite(true)
+        }
+
+//        binding.teamHeadRecyclerView.adapter=TeamFouthHeadRecyclerAdapter(headArrayList)
 
         headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
         headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))

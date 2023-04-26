@@ -27,14 +27,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:id="@+id/teamHeadRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/teamHeadRecyclerView"
-                app:layout_constraintTop_toBottomOf="@id/head_txt"
-                tools:listitem="@layout/team_head_recycler_item"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/head_txt"
+                tools:listitem="@layout/team_head_recycler_item" />
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/teamHeadRecyclerView"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/head_txt"-->
+<!--                tools:listitem="@layout/team_head_recycler_item"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>-->
 
             <TextView
                 android:id="@+id/members_txt"

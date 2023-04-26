@@ -87,7 +87,7 @@
             app:strokeWidth="2dp">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/achievementImage"
                 android:layout_width="@dimen/_190sdp"
                 android:layout_height="@dimen/_120sdp"
                 android:scaleType="centerCrop"
