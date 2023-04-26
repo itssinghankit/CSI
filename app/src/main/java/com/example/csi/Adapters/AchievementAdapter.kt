@@ -63,7 +63,7 @@ class AchievementAdapter(val arraylist:List<AchievementsDataClassItem>,val conte
             }
             is CenterRightViewHolder ->{
                 holder.achievementName.text=arraylist[position].venue.toString()
-//                Glide.with(context).load("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
+                Glide.with(context).load("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
            is CenterLeftViewHolder ->{
