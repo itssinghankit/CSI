@@ -61,24 +61,25 @@ class AchievementAdapter(val arraylist:List<AchievementsDataClassItem>,val conte
                 Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
-           is CenterLeftViewHolder ->{
-               holder.achievementName.text=arraylist[position].venue.toString()
-               Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
-               holder.circleNo.text=(position+1).toString()
-           }
             is CenterRightViewHolder ->{
                 holder.achievementName.text=arraylist[position].venue.toString()
-                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
+//                Glide.with(context).load("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
+           is CenterLeftViewHolder ->{
+               holder.achievementName.text=arraylist[position].venue.toString()
+//               Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
+               holder.circleNo.text=(position+1).toString()
+           }
+
             is LastLeftViewHolder ->{
                 holder.achievementName.text=arraylist[position].venue.toString()
-                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
+//                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
             is LastRightViewHolder ->{
                 holder.achievementName.text=arraylist[position].venue.toString()
-                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
+//                Glide.with(context).load("https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80").placeholder(R.drawable.fakeimage).into(holder.achievementImg)
                 holder.circleNo.text=(position+1).toString()
             }
         }
@@ -93,7 +94,7 @@ class AchievementAdapter(val arraylist:List<AchievementsDataClassItem>,val conte
     class CenterLeftViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg=itemView.findViewById<ImageView>(R.id.achievementImage)
-        val circleNo =itemView.findViewById<TextView>(R.id.circleNo)
+        val circleNo=itemView.findViewById<TextView>(R.id.circleNo)
     }
     class CenterRightViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val achievementName=itemView.findViewById<TextView>(R.id.achievementName)
