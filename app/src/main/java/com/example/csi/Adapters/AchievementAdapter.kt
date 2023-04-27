@@ -77,7 +77,6 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
                     .placeholder(R.drawable.fakeimage)
                     .into(holder.achievementImg)
                 holder.circleNo.text = (position + 1).toString()
-
             }
             is CenterRightViewHolder -> {
                 holder.achievementName.text = arraylist[position].venue
@@ -95,7 +94,6 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
                     .into(holder.achievementImg)
                 holder.circleNo.text = (position + 1).toString()
             }
-
             is LastLeftViewHolder -> {
                 holder.achievementName.text = arraylist[position].venue
                 Glide.with(context)
@@ -121,25 +119,21 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
-
     class CenterLeftViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
-
     class CenterRightViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
-
     class LastLeftViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
-
     class LastRightViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
