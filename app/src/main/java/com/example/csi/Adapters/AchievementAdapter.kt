@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.csi.R
 import com.example.csi.modelclasses.AchievementsDataClassItem
 
-class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val context: Context) :
+class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val context: Context,val listener:onItemClicked) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -39,7 +39,7 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             FIRST_TYPE -> FirstViewHolder(
-                LayoutInflater.from(parent.context)
+               LayoutInflater.from(parent.context)
                     .inflate(R.layout.achievement_first_recycler_item, parent, false)
             )
             CENTER_LEFT_TYPE -> CenterLeftViewHolder(
@@ -138,6 +138,12 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
+    }
+
+    interface onItemClicked{
+        fun onAchievementclicked(position:Int){
+
+        }
     }
 
 }
