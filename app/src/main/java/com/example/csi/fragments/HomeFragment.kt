@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.csi.Adapters.DomainsAdapter
 import com.example.csi.Adapters.EventsAdapter
+import com.example.csi.R
 import com.example.csi.databinding.FragmentHomeBinding
 import com.example.csi.modelclasses.Domains
 import com.example.csi.modelclasses.HomeEvents
@@ -35,10 +36,10 @@ private lateinit var DomainsArrayList:ArrayList<Domains>
 
 
         DomainsArrayList = ArrayList()
-        DomainsArrayList.add(Domains("App Development","Our team excels in application development, crafting highly functional and efficient mobile apps with passion and expertise. Our code is our craft, and we excel at it."))
-        DomainsArrayList.add(Domains("Web Development","Our team pioneers web development with cutting-edge design and technology, creating powerful websites that empower people with ease and precision."))
-        DomainsArrayList.add(Domains("Machine Learning","Our machine learning experts build adaptive algorithms using data-driven insights, enhancing efficiency, reliability, and cost-effectiveness beyond static instructions."))
-        DomainsArrayList.add(Domains("UI/UX Designing","CSI's talented innovators create stunning visual masterpieces that captivate and inspire. Their imaginative ideas and skills yield awe-inspiring results."))
+        DomainsArrayList.add(Domains("App Development","Our team excels in application development, crafting highly functional and efficient mobile apps with passion and expertise. Our code is our craft, and we excel at it.", R.drawable.app_development))
+        DomainsArrayList.add(Domains("Web Development","Our team pioneers web development with cutting-edge design and technology, creating powerful websites that empower people with ease and precision.",R.drawable.web_development))
+        DomainsArrayList.add(Domains("Machine Learning","Our machine learning experts build adaptive algorithms using data-driven insights, enhancing efficiency, reliability, and cost-effectiveness beyond static instructions.",R.drawable.machine_learning))
+        DomainsArrayList.add(Domains("UI/UX Designing","CSI's talented innovators create stunning visual masterpieces that captivate and inspire. Their imaginative ideas and skills yield awe-inspiring results.",R.drawable.designing_domain))
 
         val adapter= DomainsAdapter(DomainsArrayList)
         binding.apply {
