@@ -1,23 +1,20 @@
 package com.example.csi.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.csi.R
 import com.example.csi.modelclasses.TeamDataClassItem
+import com.example.csi.modelclasses.TeamMemberDataClass
 
-class TeamFouthHeadRecyclerAdapter(val arrayList: List<TeamDataClassItem>,val context:Context) :
-    RecyclerView.Adapter<TeamFouthHeadRecyclerAdapter.ViewHolder>() {
+class TeamFouthRecyclerAdapter(val arrayList: ArrayList<TeamMemberDataClass>) :
+    RecyclerView.Adapter<TeamFouthRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val personName = itemView.findViewById<TextView>(R.id.personName)
         val personDomain = itemView.findViewById<TextView>(R.id.personDomain)
-        val personImage=itemView.findViewById<ImageView>(R.id.personImage)
 
     }
 
@@ -33,9 +30,8 @@ class TeamFouthHeadRecyclerAdapter(val arrayList: List<TeamDataClassItem>,val co
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.personName.text = arrayList[position].name
-        holder.personDomain.text = arrayList[position].domain
-        Glide.with(context).load(arrayList[position].video).placeholder(R.drawable.fakeimage).centerCrop().into(holder.personImage)
+        holder.personName.text = arrayList[position].personName
+        holder.personDomain.text = arrayList[position].personDomain
     }
 
 }
