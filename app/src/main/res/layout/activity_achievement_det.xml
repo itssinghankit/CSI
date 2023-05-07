@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AchievementDetActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".AchievementDetActivity">
 
     <ImageView
         android:id="@+id/csilogo"
@@ -69,8 +69,7 @@
         app:sliderIndicatorSelectedColor="#5A5A5A"
         app:sliderIndicatorUnselectedColor="#FFF"
         app:sliderScrollTimeInSec="2"
-        app:sliderStartAutoCycle="true"
-        />
+        app:sliderStartAutoCycle="true" />
 
     <TextView
         android:id="@+id/teamname"

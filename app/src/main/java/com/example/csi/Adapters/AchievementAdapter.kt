@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.csi.R
 import com.example.csi.modelclasses.AchievementsDataClassItem
 
-class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val context: Context, val listener:onItemClicked) :
+class AchievementAdapter(
+    val arraylist: List<AchievementsDataClassItem>,
+    val context: Context,
+    val listener: onItemClicked
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -42,8 +45,8 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
             FIRST_TYPE -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.achievement_first_recycler_item, parent, false)
-                val viewHolder=FirstViewHolder(view)
-                view.setOnClickListener{
+                val viewHolder = FirstViewHolder(view)
+                view.setOnClickListener {
                     listener.onAchievementclicked(viewHolder.adapterPosition)
                 }
                 return viewHolder
@@ -51,35 +54,35 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
             CENTER_LEFT_TYPE -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.achievement_center_left_recycleritem, parent, false)
-                val viewHolder=CenterLeftViewHolder(view)
-                view.setOnClickListener{
+                val viewHolder = CenterLeftViewHolder(view)
+                view.setOnClickListener {
                     listener.onAchievementclicked(viewHolder.adapterPosition)
                 }
                 return viewHolder
             }
-            CENTER_RIGHT_TYPE ->{
+            CENTER_RIGHT_TYPE -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.achievement_center_right_recycleritem, parent, false)
-                val viewHolder=CenterRightViewHolder(view)
-                view.setOnClickListener{
+                val viewHolder = CenterRightViewHolder(view)
+                view.setOnClickListener {
                     listener.onAchievementclicked(viewHolder.adapterPosition)
                 }
                 return viewHolder
             }
-            LAST_LEFT_TYPE ->{
+            LAST_LEFT_TYPE -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.achievement_last_left_recycleritem, parent, false)
-                val viewHolder=LastLeftViewHolder(view)
-                view.setOnClickListener{
+                val viewHolder = LastLeftViewHolder(view)
+                view.setOnClickListener {
                     listener.onAchievementclicked(viewHolder.adapterPosition)
                 }
                 return viewHolder
             }
-            LAST_RIGHT_TYPE ->{
+            LAST_RIGHT_TYPE -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.achievement_last_right_recycleritem, parent, false)
-                val viewHolder=LastRightViewHolder(view)
-                view.setOnClickListener{
+                val viewHolder = LastRightViewHolder(view)
+                view.setOnClickListener {
                     listener.onAchievementclicked(viewHolder.adapterPosition)
                 }
                 return viewHolder
@@ -145,21 +148,25 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
+
     class CenterLeftViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
+
     class CenterRightViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
+
     class LastLeftViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
         val circleNo = itemView.findViewById<TextView>(R.id.circleNo)
     }
+
     class LastRightViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val achievementName = itemView.findViewById<TextView>(R.id.achievementName)
         val achievementImg = itemView.findViewById<ImageView>(R.id.achievementImage)
@@ -167,8 +174,9 @@ class AchievementAdapter(val arraylist: List<AchievementsDataClassItem>, val con
     }
 
 }
-interface onItemClicked{
-    fun onAchievementclicked(position:Int){
+
+interface onItemClicked {
+    fun onAchievementclicked(position: Int) {
 
     }
 }
