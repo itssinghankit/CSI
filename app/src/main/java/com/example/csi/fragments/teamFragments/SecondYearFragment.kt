@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.csi.Adapters.TeamFouthHeadRecyclerAdapter
 import com.example.csi.Adapters.TeamFouthRecyclerAdapter
 import com.example.csi.databinding.FragmentSecondYearBinding
 import com.example.csi.modelclasses.TeamMemberDataClass

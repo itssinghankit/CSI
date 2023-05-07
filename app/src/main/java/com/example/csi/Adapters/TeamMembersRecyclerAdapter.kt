@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.example.csi.R
 import com.example.csi.modelclasses.TeamDataClassItem
 
-class TeamFouthHeadRecyclerAdapter(val arrayList: List<TeamDataClassItem>,val context:Context) :
-    RecyclerView.Adapter<TeamFouthHeadRecyclerAdapter.ViewHolder>() {
+class TeamMembersRecyclerAdapter(val arrayList: List<TeamDataClassItem>, val context:Context) :
+    RecyclerView.Adapter<TeamMembersRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val personName = itemView.findViewById<TextView>(R.id.personName)

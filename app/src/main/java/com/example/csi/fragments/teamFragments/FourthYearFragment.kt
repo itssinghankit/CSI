@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.csi.Adapters.TeamFouthHeadRecyclerAdapter
+import com.example.csi.Adapters.TeamMembersRecyclerAdapter
 import com.example.csi.Adapters.TeamFouthRecyclerAdapter
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentFourthYearBinding
-import com.example.csi.modelclasses.TeamDataClass
 import com.example.csi.modelclasses.TeamDataClassItem
 import com.example.csi.modelclasses.TeamMemberDataClass
 import retrofit2.Call
@@ -76,7 +75,7 @@ private lateinit var headArrayList: ArrayList<TeamMemberDataClass>
                            membersList.add(res)
                        }
                    }
-                   binding.teamMemberRecyclerView.adapter=TeamFouthHeadRecyclerAdapter(membersList!!,context!!)
+                   binding.teamMemberRecyclerView.adapter=TeamMembersRecyclerAdapter(membersList!!,context!!)
                }
             }
 

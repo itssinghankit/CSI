@@ -5,11 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.csi.Adapters.TeamFouthHeadRecyclerAdapter
 import com.example.csi.Adapters.TeamFouthRecyclerAdapter
+import com.example.csi.Adapters.TeamMembersRecyclerAdapter
+import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentThirdYearBinding
+import com.example.csi.modelclasses.TeamDataClassItem
 import com.example.csi.modelclasses.TeamMemberDataClass
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ThirdYearFragment : Fragment() {
@@ -23,24 +31,34 @@ class ThirdYearFragment : Fragment() {
         // Inflate the layout for this fragment
         binding= FragmentThirdYearBinding.inflate(layoutInflater)
 
-        headArrayList= ArrayList()
+        binding.teamMemberRecyclerView.layoutManager=GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
 
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh","app developer"))
+        val retrofitBuilder=
+            Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/").addConverterFactory(
+                GsonConverterFactory.create()).build()
+        val request=retrofitBuilder.create(RetrofitInterface::class.java)
+        val call=request.TeamGetData()
+        call.enqueue(object : Callback<List<TeamDataClassItem>?> {
+            override fun onResponse(
+                call: Call<List<TeamDataClassItem>?>,
+                response: Response<List<TeamDataClassItem>?>
+            ) {
+                if (response.isSuccessful){
+                    val membersList= mutableListOf<TeamDataClassItem>()
+                    for (res in response.body()!!){
+                        if (res.year=="3rd"){
+                            membersList.add(res)
+                        }
+                    }
+                    binding.teamMemberRecyclerView.adapter=
+                        TeamMembersRecyclerAdapter(membersList!!,context!!)
+                }
+            }
 
-        binding.teamMemberRecyclerView.layoutManager=
-            GridLayoutManager(context,2, GridLayoutManager.VERTICAL,false)
-        binding.teamMemberRecyclerView.adapter= TeamFouthRecyclerAdapter(headArrayList)
+            override fun onFailure(call: Call<List<TeamDataClassItem>?>, t: Throwable) {
+                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+            }
+        })
         return binding.root
     }
 
