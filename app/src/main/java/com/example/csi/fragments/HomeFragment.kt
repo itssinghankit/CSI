@@ -12,6 +12,7 @@ import com.example.csi.R
 import com.example.csi.databinding.FragmentHomeBinding
 import com.example.csi.modelclasses.Domains
 import com.example.csi.modelclasses.HomeEvents
+import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
@@ -93,6 +94,11 @@ class HomeFragment : Fragment() {
             domainsrecylerview.setAlpha(true)
             domainsrecylerview.setInfinite(true)
         }
+
+        Picasso.get()
+            .load("http://drive.google.com/uc?export=view&id=11ObxvbYDbFXG1XzwvyCJ4P9ljntKmVCH")
+            .placeholder(R.drawable.fakeimage)
+            .into(binding.image);
 
         return binding.root
     }
