@@ -1,7 +1,10 @@
 package com.example.csi.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.widget.Toast
+import com.example.csi.Interfaces.RetrofitInterface
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -11,7 +14,13 @@ import com.example.csi.Adapters.EventsAdapter
 import com.example.csi.R
 import com.example.csi.databinding.FragmentHomeBinding
 import com.example.csi.modelclasses.Domains
+import com.example.csi.modelclasses.EventDataClassItem
 import com.example.csi.modelclasses.HomeEvents
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
@@ -26,34 +35,40 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        eventArrayList = ArrayList()
-        eventArrayList.add(
-            HomeEvents(
-                "Carnivals",
-                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
-            )
-        )
-        eventArrayList.add(
-            HomeEvents(
-                "Carnivals",
-                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
-            )
-        )
-        eventArrayList.add(
-            HomeEvents(
-                "Carnivals",
-                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
-            )
-        )
-        eventArrayList.add(
-            HomeEvents(
-                "Carnivals",
-                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
-            )
-        )
-        binding.eventsRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.eventsRecyclerView.adapter = EventsAdapter(eventArrayList)
+
+        binding.eventsRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+
+        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/")
+            .addConverterFactory(GsonConverterFactory.create()).build()
+
+        val request=retrofitBuilder.create(RetrofitInterface::class.java)
+        val call =request.EventGetData()
+
+        call.enqueue(object : Callback<List<EventDataClassItem>?> {
+            override fun onResponse(
+                call: Call<List<EventDataClassItem>?>,
+                response: Response<List<EventDataClassItem>?>
+            ) {
+                Log.d("checking",response.body().toString())
+                if(response.isSuccessful){
+                    val eventList=response.body()
+                    binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!)
+                }
+            }
+
+            override fun onFailure(call: Call<List<EventDataClassItem>?>, t: Throwable) {
+                Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+//        eventArrayList= ArrayList()
+//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
+//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
+//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
+//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
+//        binding.eventsRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+//        binding.eventsRecyclerView.adapter=EventsAdapter(eventArrayList)
+
 
 
 
