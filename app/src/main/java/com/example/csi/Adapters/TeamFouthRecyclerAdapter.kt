@@ -3,14 +3,14 @@ package com.example.csi.Adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.csi.R
+import com.example.csi.modelclasses.TeamDataClassItem
 import com.example.csi.modelclasses.TeamMemberDataClass
 
-class TeamFouthHeadRecyclerAdapter(val arrayList: ArrayList<TeamMemberDataClass>) :
-    RecyclerView.Adapter<TeamFouthHeadRecyclerAdapter.ViewHolder>() {
+class TeamFouthRecyclerAdapter(val arrayList: ArrayList<TeamMemberDataClass>) :
+    RecyclerView.Adapter<TeamFouthRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val personName = itemView.findViewById<TextView>(R.id.personName)

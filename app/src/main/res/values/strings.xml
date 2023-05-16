@@ -3,5 +3,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+
     <string name="welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_this_is_the_best_way_to_book_your_app_so_book_your_hotel">welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and . this is the best way to book your app so book your hotel</string>
+
+    <string name="title_activity_achievement_det">AchievementDetActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 </resources>

@@ -1,7 +1,8 @@
 package com.example.csi.Adapters
+import android.media.Image
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.csi.R
@@ -14,6 +15,7 @@ class DomainsAdapter(val arrayList: ArrayList<Domains>): RecyclerView.Adapter<Do
     class ViewHolder( val binding: DomainRecyclerBinding) : RecyclerView.ViewHolder(binding.root){
         val DomainsName=itemView.findViewById<TextView>(R.id.domainName)
         val domdescription=itemView.findViewById<TextView>(R.id.domdescription)
+        val domainImage=itemView.findViewById<ImageView>(R.id.image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,9 +29,9 @@ class DomainsAdapter(val arrayList: ArrayList<Domains>): RecyclerView.Adapter<Do
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.DomainsName.text=arrayList[position].DomainsName
-        holder.domdescription.text=arrayList[position].domdescription
-
+        holder.DomainsName.text=arrayList[position].domainName
+        holder.domdescription.text=arrayList[position].domaindescription
+        holder.domainImage.setImageResource(arrayList[position].domainsImageResourceId!!)
     }
 
 }
