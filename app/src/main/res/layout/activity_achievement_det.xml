@@ -100,16 +100,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/teamname" />
 
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:fontFamily="@font/montserrat_regular"
+        android:justificationMode="inter_word"
+        android:text="ha ahhfhdjdfjfb  dhfjdhfjd djfhdjfhdj dfhdjf  jdfhjdhjf djfhjdfh jdfhjdhfj dfjhjdfhj jdfhjdfh jhdfj f hdfjhfdj  jdhfjhdfj df jdfhjf "
+        android:textColor="@color/txtgrey"
+        android:textSize="@dimen/_9ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date" />
+
     <View
         android:id="@+id/view0"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_25sdp"
         android:layout_marginEnd="@dimen/_12sdp"
         android:background="@color/linecolor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/date" />
+        app:layout_constraintTop_toBottomOf="@id/content" />
 
     <TextView
         android:id="@+id/members_txt"

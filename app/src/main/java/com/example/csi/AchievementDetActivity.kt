@@ -55,6 +55,7 @@ class AchievementDetActivity : AppCompatActivity() {
                     binding.sliderCarousel.startAutoCycle()
 
                     binding.teamname.text = achievementList[position].Teamname
+                    binding.content.text=achievementList[position].content
                     binding.date.text = achievementList[position].date
                     var members = ""
                     for (member in achievementList[position].members) {

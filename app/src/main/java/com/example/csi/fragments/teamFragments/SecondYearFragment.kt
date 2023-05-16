@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.csi.Adapters.TeamFouthRecyclerAdapter
 import com.example.csi.Adapters.TeamMembersRecyclerAdapter
 import com.example.csi.Interfaces.RetrofitInterface
@@ -22,12 +23,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SecondYearFragment : Fragment() {
     private lateinit var binding: FragmentSecondYearBinding
-    private lateinit var headArrayList: ArrayList<TeamMemberDataClass>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentSecondYearBinding.inflate(layoutInflater)
+        binding.teamMemberRecyclerView.layoutManager=GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
 
         val retrofitBuilder =
             Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/")
