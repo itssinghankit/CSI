@@ -21,7 +21,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
@@ -60,17 +59,6 @@ class HomeFragment : Fragment() {
                 Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show()
             }
         })
-
-//        eventArrayList= ArrayList()
-//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
-//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
-//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
-//        eventArrayList.add(HomeEvents("Carnivals","i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"))
-//        binding.eventsRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-//        binding.eventsRecyclerView.adapter=EventsAdapter(eventArrayList)
-
-
-
 
         DomainsArrayList = ArrayList()
         DomainsArrayList.add(

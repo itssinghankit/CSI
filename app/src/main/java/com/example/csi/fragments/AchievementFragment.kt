@@ -49,7 +49,6 @@ class AchievementFragment : Fragment(), onItemClicked {
                 call: Call<List<AchievementsDataClassItem>?>,
                 response: Response<List<AchievementsDataClassItem>?>
             ) {
-                Log.d("meow",response.body().toString())
                 if(response.isSuccessful){
                     achievementList=response.body()!!
                     binding.AchievementRecyclerview.adapter=AchievementAdapter(achievementList!!,context!!,this@AchievementFragment)
