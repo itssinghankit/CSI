@@ -11,7 +11,6 @@ import com.example.csi.Adapters.TeamMembersRecyclerAdapter
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentThirdYearBinding
 import com.example.csi.modelclasses.TeamDataClassItem
-import com.example.csi.modelclasses.TeamMemberDataClass
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

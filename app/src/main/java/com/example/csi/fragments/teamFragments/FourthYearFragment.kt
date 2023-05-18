@@ -13,7 +13,6 @@ import com.example.csi.Adapters.TeamMembersRecyclerAdapter
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentFourthYearBinding
 import com.example.csi.modelclasses.TeamDataClassItem
-import com.example.csi.modelclasses.TeamMemberDataClass
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +21,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class FourthYearFragment : Fragment() {
     private lateinit var binding: FragmentFourthYearBinding
-    private lateinit var headArrayList: ArrayList<TeamMemberDataClass>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,32 +29,13 @@ class FourthYearFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentFourthYearBinding.inflate(layoutInflater)
 
-        headArrayList = ArrayList()
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-
+        //for head coordinators
+        var headArrayList= mutableListOf<TeamDataClassItem>()
         binding.teamHeadRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        binding.apply {
-            teamHeadRecyclerView.adapter = TeamFouthRecyclerAdapter(headArrayList)
-            teamHeadRecyclerView.set3DItem(true)
-            teamHeadRecyclerView.setAlpha(true)
-            teamHeadRecyclerView.setInfinite(true)
-        }
 
-
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-        headArrayList.add(TeamMemberDataClass("Ankit Singh", "app developer"))
-
+        //for other fourth year members
         binding.teamMemberRecyclerView.layoutManager =
             GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
 
@@ -76,7 +55,19 @@ class FourthYearFragment : Fragment() {
                         if (res.year == "4th") {
                             membersList.add(res)
                         }
+                        if(res.coordinator=="TRUE"){
+                            headArrayList.add(res)
+                        }
                     }
+                    //for heads
+                    binding.apply {
+                        binding.teamHeadRecyclerView.adapter = TeamFouthRecyclerAdapter(headArrayList,context!!)
+                        teamHeadRecyclerView.set3DItem(true)
+                        teamHeadRecyclerView.setAlpha(true)
+                        teamHeadRecyclerView.setInfinite(true)
+                    }
+
+                    //for members
                     binding.teamMemberRecyclerView.adapter =
                         TeamMembersRecyclerAdapter(membersList!!, context!!)
                 }
@@ -89,6 +80,5 @@ class FourthYearFragment : Fragment() {
 
         return binding.root
     }
-
 
 }

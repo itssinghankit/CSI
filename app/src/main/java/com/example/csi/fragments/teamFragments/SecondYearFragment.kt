@@ -7,13 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.example.csi.Adapters.TeamFouthRecyclerAdapter
 import com.example.csi.Adapters.TeamMembersRecyclerAdapter
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentSecondYearBinding
 import com.example.csi.modelclasses.TeamDataClassItem
-import com.example.csi.modelclasses.TeamMemberDataClass
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
