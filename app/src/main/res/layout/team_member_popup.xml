@@ -37,7 +37,7 @@
                 android:id="@+id/personName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="Ankit Singh"
+                android:text="Divyanshu Rana"
                 android:textSize="@dimen/_13ssp"
                 android:maxLines="1"
                 android:ellipsize="end"

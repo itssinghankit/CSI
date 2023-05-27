@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -101,6 +102,15 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()
         dialog.setContentView(R.layout.team_member_popup)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener{
+            Toast.makeText(context, "linkedin", Toast.LENGTH_SHORT).show()
+        }
+        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener{
+            Toast.makeText(context, "insta", Toast.LENGTH_SHORT).show()
+        }
+        dialog.findViewById<ImageView>(R.id.github).setOnClickListener{
+            Toast.makeText(context, "github", Toast.LENGTH_SHORT).show()
+        }
         dialog.show()
     }
 
