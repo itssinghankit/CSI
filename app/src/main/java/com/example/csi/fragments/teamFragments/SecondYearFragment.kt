@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.csi.Adapters.TeamMembersRecyclerAdapter
+import com.example.csi.Interfaces.OnItemClicked
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentSecondYearBinding
 import com.example.csi.modelclasses.TeamDataClassItem
@@ -18,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class SecondYearFragment : Fragment() {
+class SecondYearFragment : Fragment(), OnItemClicked {
     private lateinit var binding: FragmentSecondYearBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +48,7 @@ class SecondYearFragment : Fragment() {
                         }
                     }
                     binding.teamMemberRecyclerView.adapter =
-                        TeamMembersRecyclerAdapter(membersList!!, context!!)
+                        TeamMembersRecyclerAdapter(membersList!!, context!!,this@SecondYearFragment)
                 }
             }
 

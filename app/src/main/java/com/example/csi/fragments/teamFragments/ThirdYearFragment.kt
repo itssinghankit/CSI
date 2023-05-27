@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.csi.Adapters.TeamMembersRecyclerAdapter
+import com.example.csi.Interfaces.OnItemClicked
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.databinding.FragmentThirdYearBinding
 import com.example.csi.modelclasses.TeamDataClassItem
@@ -18,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class ThirdYearFragment : Fragment() {
+class ThirdYearFragment : Fragment(), OnItemClicked {
     private lateinit var binding: FragmentThirdYearBinding
 
     override fun onCreateView(
@@ -51,7 +52,7 @@ class ThirdYearFragment : Fragment() {
                         }
                     }
                     binding.teamMemberRecyclerView.adapter =
-                        TeamMembersRecyclerAdapter(membersList!!, context!!)
+                        TeamMembersRecyclerAdapter(membersList!!, context!!,this@ThirdYearFragment)
                 }
             }
 

@@ -14,8 +14,8 @@ import com.example.csi.modelclasses.TeamDataClassItem
 
 class TeamFouthRecyclerAdapter(
     val arrayList: List<TeamDataClassItem>,
-    val context: Context,
-    val listener: OnItemClicked
+    val context: Context
+
 ) :
     RecyclerView.Adapter<TeamFouthRecyclerAdapter.ViewHolder>() {
 
@@ -29,9 +29,7 @@ class TeamFouthRecyclerAdapter(
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.team_head_recycler_item, parent, false)
         val viewHolder = ViewHolder(view)
-        view.setOnClickListener {
-            listener.clickedItem(viewHolder.adapterPosition)
-        }
+
         return viewHolder
     }
 
