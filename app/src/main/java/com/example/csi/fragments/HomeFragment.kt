@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         binding.eventsRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
-        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/")
+        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
             .addConverterFactory(GsonConverterFactory.create()).build()
 
         val request=retrofitBuilder.create(RetrofitInterface::class.java)
@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
                 call: Call<List<EventDataClassItem>?>,
                 response: Response<List<EventDataClassItem>?>
             ) {
-                Log.d("checking",response.body().toString())
                 if(response.isSuccessful){
                     val eventList=response.body()
                     binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!)
@@ -100,6 +99,5 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
-
 
 }
