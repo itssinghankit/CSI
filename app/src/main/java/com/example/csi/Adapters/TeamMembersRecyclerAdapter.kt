@@ -8,10 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.csi.Interfaces.OnItemClicked
 import com.example.csi.R
 import com.example.csi.modelclasses.TeamDataClassItem
 
-class TeamMembersRecyclerAdapter(val arrayList: List<TeamDataClassItem>, val context:Context) :
+class TeamMembersRecyclerAdapter(val arrayList: List<TeamDataClassItem>, val context:Context, val listener: OnItemClicked) :
     RecyclerView.Adapter<TeamMembersRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,6 +26,9 @@ class TeamMembersRecyclerAdapter(val arrayList: List<TeamDataClassItem>, val con
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.team_head_recycler_item, parent, false)
         val viewHolder = ViewHolder(view)
+        view.setOnClickListener {
+            listener.clickedItem(viewHolder.adapterPosition)
+        }
         return viewHolder
     }
 

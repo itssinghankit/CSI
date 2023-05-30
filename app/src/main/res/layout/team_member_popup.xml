@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_210sdp"
+    android:layout_height="@dimen/_240sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rectangle"
+    android:layout_gravity="center">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp"
+       >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:id="@+id/imageContainer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_25sdp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/personImage"
+                    android:src="@drawable/fakeimage"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/personName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Divyanshu Rana"
+                android:textSize="@dimen/_13ssp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:textColor="@color/black"
+                android:capitalize="words"
+                android:fontFamily="@font/montserrat_semibold"
+                app:layout_constraintTop_toBottomOf="@id/imageContainer"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="ANDROID DEVELOPER"
+                android:textAllCaps="true"
+                android:id="@+id/personDomain"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:textColor="@color/darkblue"
+                android:textSize="@dimen/_9ssp"
+                android:fontFamily="@font/montserrat_semibold"
+                app:layout_constraintTop_toBottomOf="@id/personName"/>
+            <ImageView
+                android:layout_width="@dimen/_19sdp"
+                android:layout_height="@dimen/_19sdp"
+                android:id="@+id/linkedin"
+                android:src="@drawable/linkedin"
+                app:layout_constraintTop_toBottomOf="@id/personDomain"
+                android:layout_marginTop="@dimen/_37sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/github"
+                android:layout_marginStart="@dimen/_12sdp"/>
+            <ImageView
+                android:layout_width="@dimen/_19sdp"
+                android:layout_height="@dimen/_19sdp"
+                android:id="@+id/github"
+                android:src="@drawable/github"
+                app:layout_constraintTop_toBottomOf="@id/personDomain"
+                android:layout_marginTop="@dimen/_37sdp"
+                app:layout_constraintStart_toEndOf="@id/linkedin"
+                app:layout_constraintEnd_toStartOf="@id/instagram"/>
+            <ImageView
+                android:layout_width="@dimen/_19sdp"
+                android:layout_height="@dimen/_19sdp"
+                android:id="@+id/instagram"
+                android:src="@drawable/instagram"
+                app:layout_constraintTop_toBottomOf="@id/personDomain"
+                android:layout_marginTop="@dimen/_37sdp"
+                app:layout_constraintStart_toEndOf="@id/github"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/_12sdp"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

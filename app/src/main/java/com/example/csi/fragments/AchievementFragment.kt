@@ -37,7 +37,7 @@ class AchievementFragment : Fragment(), onItemClicked {
 
         binding.AchievementRecyclerview.layoutManager=LinearLayoutManager(context)
 
-        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/")
+        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
             .addConverterFactory(GsonConverterFactory.create()).build()
 
         val request=retrofitBuilder.create(RetrofitInterface::class.java)

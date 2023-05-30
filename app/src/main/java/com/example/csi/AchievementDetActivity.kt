@@ -27,7 +27,7 @@ class AchievementDetActivity : AppCompatActivity() {
         val arrayList = ArrayList<AchievementImagesDataClass>()
 
         val retrofitBuilder =
-            Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/")
+            Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create()).build()
 
         val request = retrofitBuilder.create(RetrofitInterface::class.java)

@@ -1,17 +1,24 @@
 package com.example.csi.fragments.teamFragments
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.example.csi.Adapters.TeamMembersRecyclerAdapter
+import com.example.csi.Interfaces.OnItemClicked
 import com.example.csi.Interfaces.RetrofitInterface
+import com.example.csi.R
 import com.example.csi.databinding.FragmentThirdYearBinding
 import com.example.csi.modelclasses.TeamDataClassItem
-import com.example.csi.modelclasses.TeamMemberDataClass
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,8 +26,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class ThirdYearFragment : Fragment() {
+class ThirdYearFragment : Fragment(), OnItemClicked {
     private lateinit var binding: FragmentThirdYearBinding
+    private lateinit var dialog: Dialog
+    val membersList = mutableListOf<TeamDataClassItem>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +42,7 @@ class ThirdYearFragment : Fragment() {
             GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
 
         val retrofitBuilder =
-            Retrofit.Builder().baseUrl("https://csiwebsitebackend-production.up.railway.app/")
+            Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
                 .addConverterFactory(
                     GsonConverterFactory.create()
                 ).build()
@@ -45,14 +54,14 @@ class ThirdYearFragment : Fragment() {
                 response: Response<List<TeamDataClassItem>?>
             ) {
                 if (response.isSuccessful) {
-                    val membersList = mutableListOf<TeamDataClassItem>()
+
                     for (res in response.body()!!) {
                         if (res.year == "3rd") {
                             membersList.add(res)
                         }
                     }
                     binding.teamMemberRecyclerView.adapter =
-                        TeamMembersRecyclerAdapter(membersList!!, context!!)
+                        TeamMembersRecyclerAdapter(membersList!!, context!!, this@ThirdYearFragment)
                 }
             }
 
@@ -60,8 +69,34 @@ class ThirdYearFragment : Fragment() {
                 Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
             }
         })
+
+        //dialog popup
+        dialog = Dialog(requireContext())
+
         return binding.root
     }
 
+    override fun clickedItem(position: Int) {
+        dialog.setContentView(R.layout.team_member_popup)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.findViewById<TextView>(R.id.personName).text = membersList[position].name
+        dialog.findViewById<TextView>(R.id.personDomain).text = membersList[position].domain
+        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage).into(
+            dialog.findViewById<ImageView>(
+                R.id.personImage
+            )
+        )
+
+        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
+            Toast.makeText(context, membersList[position].linkedin, Toast.LENGTH_SHORT).show()
+        }
+        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
+            Toast.makeText(context, membersList[position].Insta, Toast.LENGTH_SHORT).show()
+        }
+        dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
+            Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
+        }
+        dialog.show()
+    }
 
 }
