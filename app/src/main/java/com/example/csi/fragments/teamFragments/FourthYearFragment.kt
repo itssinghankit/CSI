@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class FourthYearFragment : Fragment(), OnItemClicked {
     private lateinit var binding: FragmentFourthYearBinding
-    private lateinit var dialog:Dialog
+    private lateinit var dialog: Dialog
     val membersList = mutableListOf<TeamDataClassItem>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,7 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         binding = FragmentFourthYearBinding.inflate(layoutInflater)
 
         //for head coordinators
-        var headArrayList= mutableListOf<TeamDataClassItem>()
+        var headArrayList = mutableListOf<TeamDataClassItem>()
         binding.teamHeadRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -62,14 +62,15 @@ class FourthYearFragment : Fragment(), OnItemClicked {
                     for (res in response.body()!!) {
                         if (res.year == "4th") {
                             membersList.add(res)
-                              }
-                        if(res.coordinator=="TRUE"){
+                        }
+                        if (res.coordinator == "TRUE") {
                             headArrayList.add(res)
                         }
                     }
                     //for heads
                     binding.apply {
-                        binding.teamHeadRecyclerView.adapter = TeamFouthRecyclerAdapter(headArrayList,context!!)
+                        binding.teamHeadRecyclerView.adapter =
+                            TeamFouthRecyclerAdapter(headArrayList, context!!)
                         teamHeadRecyclerView.set3DItem(true)
                         teamHeadRecyclerView.setAlpha(true)
                         teamHeadRecyclerView.setInfinite(true)
@@ -77,7 +78,11 @@ class FourthYearFragment : Fragment(), OnItemClicked {
 
                     //for members
                     binding.teamMemberRecyclerView.adapter =
-                        TeamMembersRecyclerAdapter(membersList!!, context!!,this@FourthYearFragment)
+                        TeamMembersRecyclerAdapter(
+                            membersList!!,
+                            context!!,
+                            this@FourthYearFragment
+                        )
                 }
             }
 
@@ -87,7 +92,7 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         })
 
         //dialog popup
-        dialog= Dialog(requireContext())
+        dialog = Dialog(requireContext())
 
         return binding.root
     }
@@ -95,18 +100,19 @@ class FourthYearFragment : Fragment(), OnItemClicked {
     override fun clickedItem(position: Int) {
         dialog.setContentView(R.layout.team_member_popup)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.findViewById<TextView>(R.id.personName).text=membersList[position].name
-        dialog.findViewById<TextView>(R.id.personDomain).text=membersList[position].domain
-        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage).into( dialog.findViewById<ImageView>(R.id.personImage))
+        dialog.findViewById<TextView>(R.id.personName).text = membersList[position].name
+        dialog.findViewById<TextView>(R.id.personDomain).text = membersList[position].domain
+        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage)
+            .into(dialog.findViewById<ImageView>(R.id.personImage))
 
 
-        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
             Toast.makeText(context, membersList[position].linkedin, Toast.LENGTH_SHORT).show()
         }
-        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
             Toast.makeText(context, membersList[position].Insta, Toast.LENGTH_SHORT).show()
         }
-        dialog.findViewById<ImageView>(R.id.github).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
 
         }

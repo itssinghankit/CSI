@@ -4,13 +4,13 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.csi.Adapters.TeamMembersRecyclerAdapter
@@ -34,8 +34,9 @@ class SecondYearFragment : Fragment(), OnItemClicked {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentSecondYearBinding.inflate(layoutInflater)
-        binding.teamMemberRecyclerView.layoutManager=GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
+        binding = FragmentSecondYearBinding.inflate(layoutInflater)
+        binding.teamMemberRecyclerView.layoutManager =
+            GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
 
         val retrofitBuilder =
             Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
@@ -57,7 +58,11 @@ class SecondYearFragment : Fragment(), OnItemClicked {
                         }
                     }
                     binding.teamMemberRecyclerView.adapter =
-                        TeamMembersRecyclerAdapter(membersList!!, context!!,this@SecondYearFragment)
+                        TeamMembersRecyclerAdapter(
+                            membersList!!,
+                            context!!,
+                            this@SecondYearFragment
+                        )
                 }
             }
 
@@ -67,7 +72,7 @@ class SecondYearFragment : Fragment(), OnItemClicked {
         })
 
         //dialog popup
-        dialog= Dialog(requireContext())
+        dialog = Dialog(requireContext())
 
         return binding.root
     }
@@ -75,18 +80,21 @@ class SecondYearFragment : Fragment(), OnItemClicked {
     override fun clickedItem(position: Int) {
         dialog.setContentView(R.layout.team_member_popup)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.findViewById<TextView>(R.id.personName).text=membersList[position].name
-        dialog.findViewById<TextView>(R.id.personDomain).text=membersList[position].domain
-        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage).into( dialog.findViewById<ImageView>(
-            R.id.personImage))
+        dialog.findViewById<TextView>(R.id.personName).text = membersList[position].name
+        dialog.findViewById<TextView>(R.id.personDomain).text = membersList[position].domain
+        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage).into(
+            dialog.findViewById<ImageView>(
+                R.id.personImage
+            )
+        )
 
-        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
             Toast.makeText(context, membersList[position].linkedin, Toast.LENGTH_SHORT).show()
         }
-        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
             Toast.makeText(context, membersList[position].Insta, Toast.LENGTH_SHORT).show()
         }
-        dialog.findViewById<ImageView>(R.id.github).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
 
         }

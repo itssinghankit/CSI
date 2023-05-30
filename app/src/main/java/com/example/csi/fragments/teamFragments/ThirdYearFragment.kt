@@ -61,7 +61,7 @@ class ThirdYearFragment : Fragment(), OnItemClicked {
                         }
                     }
                     binding.teamMemberRecyclerView.adapter =
-                        TeamMembersRecyclerAdapter(membersList!!, context!!,this@ThirdYearFragment)
+                        TeamMembersRecyclerAdapter(membersList!!, context!!, this@ThirdYearFragment)
                 }
             }
 
@@ -71,7 +71,7 @@ class ThirdYearFragment : Fragment(), OnItemClicked {
         })
 
         //dialog popup
-        dialog= Dialog(requireContext())
+        dialog = Dialog(requireContext())
 
         return binding.root
     }
@@ -79,18 +79,21 @@ class ThirdYearFragment : Fragment(), OnItemClicked {
     override fun clickedItem(position: Int) {
         dialog.setContentView(R.layout.team_member_popup)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.findViewById<TextView>(R.id.personName).text=membersList[position].name
-        dialog.findViewById<TextView>(R.id.personDomain).text=membersList[position].domain
-        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage).into( dialog.findViewById<ImageView>(
-            R.id.personImage))
+        dialog.findViewById<TextView>(R.id.personName).text = membersList[position].name
+        dialog.findViewById<TextView>(R.id.personDomain).text = membersList[position].domain
+        Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage).into(
+            dialog.findViewById<ImageView>(
+                R.id.personImage
+            )
+        )
 
-        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
             Toast.makeText(context, membersList[position].linkedin, Toast.LENGTH_SHORT).show()
         }
-        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
             Toast.makeText(context, membersList[position].Insta, Toast.LENGTH_SHORT).show()
         }
-        dialog.findViewById<ImageView>(R.id.github).setOnClickListener{
+        dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
 
         }
