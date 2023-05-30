@@ -4,4 +4,7 @@ interface OnItemClicked {
     fun clickedItem(position:Int){
 
     }
+    fun headClickedItem(position: Int){
+
+    }
 }

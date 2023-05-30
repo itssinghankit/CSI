@@ -95,7 +95,6 @@ class ThirdYearFragment : Fragment(), OnItemClicked {
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
-
         }
         dialog.show()
     }

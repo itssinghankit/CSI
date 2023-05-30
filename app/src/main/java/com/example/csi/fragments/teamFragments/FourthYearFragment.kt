@@ -31,6 +31,7 @@ class FourthYearFragment : Fragment(), OnItemClicked {
     private lateinit var binding: FragmentFourthYearBinding
     private lateinit var dialog: Dialog
     val membersList = mutableListOf<TeamDataClassItem>()
+    var headArrayList = mutableListOf<TeamDataClassItem>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +40,7 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         binding = FragmentFourthYearBinding.inflate(layoutInflater)
 
         //for head coordinators
-        var headArrayList = mutableListOf<TeamDataClassItem>()
+
         binding.teamHeadRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -70,7 +71,7 @@ class FourthYearFragment : Fragment(), OnItemClicked {
                     //for heads
                     binding.apply {
                         binding.teamHeadRecyclerView.adapter =
-                            TeamFouthRecyclerAdapter(headArrayList, context!!)
+                            TeamFouthRecyclerAdapter(headArrayList, context!!,this@FourthYearFragment)
                         teamHeadRecyclerView.set3DItem(true)
                         teamHeadRecyclerView.setAlpha(true)
                         teamHeadRecyclerView.setInfinite(true)
@@ -103,8 +104,7 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         dialog.findViewById<TextView>(R.id.personName).text = membersList[position].name
         dialog.findViewById<TextView>(R.id.personDomain).text = membersList[position].domain
         Glide.with(this).load(membersList[position].video).placeholder(R.drawable.fakeimage)
-            .into(dialog.findViewById<ImageView>(R.id.personImage))
-
+            .into(dialog.findViewById(R.id.personImage))
 
         dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
             Toast.makeText(context, membersList[position].linkedin, Toast.LENGTH_SHORT).show()
@@ -114,6 +114,27 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
+
+        }
+        dialog.show()
+    }
+
+    override fun headClickedItem(position: Int) {
+        dialog.setContentView(R.layout.team_member_popup)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.findViewById<TextView>(R.id.personName).text = headArrayList[position].name
+        dialog.findViewById<TextView>(R.id.personDomain).text = headArrayList[position].domain
+        Glide.with(this).load(headArrayList[position].video).placeholder(R.drawable.fakeimage)
+            .into(dialog.findViewById(R.id.personImage))
+
+        dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
+            Toast.makeText(context, headArrayList[position].linkedin, Toast.LENGTH_SHORT).show()
+        }
+        dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
+            Toast.makeText(context, headArrayList[position].Insta, Toast.LENGTH_SHORT).show()
+        }
+        dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
+            Toast.makeText(context, headArrayList[position].github, Toast.LENGTH_SHORT).show()
 
         }
         dialog.show()
