@@ -4,8 +4,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_this_is_the_best_way_to_book_your_app_so_book_your_hotel">welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and . this is the best way to book your app so book your hotel</string>
 =======
+=======
+
+    <string name="welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_this_is_the_best_way_to_book_your_app_so_book_your_hotel">welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and . this is the best way to book your app so book your hotel</string>
+
+>>>>>>> 2f7e5fc67d12537e7248eee2b4f2949138270211
     <string name="title_activity_achievement_det">AchievementDetActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -15,5 +21,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+<<<<<<< HEAD
 >>>>>>> 55de12170ccdd7f88b495e5b0cefd764e9958646
+=======
+
+>>>>>>> 2f7e5fc67d12537e7248eee2b4f2949138270211
 </resources>

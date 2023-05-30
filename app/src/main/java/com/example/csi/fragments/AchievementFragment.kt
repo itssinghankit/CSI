@@ -23,14 +23,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class AchievementFragment : Fragment(), onItemClicked {
 
     private lateinit var binding: FragmentAchievementBinding
-<<<<<<< HEAD
-=======
     private lateinit var achievementList:List<AchievementsDataClassItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
->>>>>>> 55de12170ccdd7f88b495e5b0cefd764e9958646
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +47,6 @@ class AchievementFragment : Fragment(), onItemClicked {
                 call: Call<List<AchievementsDataClassItem>?>,
                 response: Response<List<AchievementsDataClassItem>?>
             ) {
-                Log.d("meow",response.body().toString())
                 if(response.isSuccessful){
                     achievementList=response.body()!!
                     binding.AchievementRecyclerview.adapter=AchievementAdapter(achievementList!!,context!!,this@AchievementFragment)

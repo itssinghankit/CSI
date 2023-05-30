@@ -109,7 +109,6 @@
         android:layout_marginTop="@dimen/_12sdp"
         android:fontFamily="@font/montserrat_regular"
         android:justificationMode="inter_word"
-        android:text="ha ahhfhdjdfjfb  dhfjdhfjd djfhdjfhdj dfhdjf  jdfhjdhjf djfhjdfh jdfhjdhfj dfjhjdfhj jdfhjdfh jhdfj f hdfjhfdj  jdhfjhdfj df jdfhjf "
         android:textColor="@color/txtgrey"
         android:textSize="@dimen/_9ssp"
         app:layout_constraintEnd_toEndOf="parent"
