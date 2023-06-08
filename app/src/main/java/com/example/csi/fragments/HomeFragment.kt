@@ -43,23 +43,25 @@ class HomeFragment : Fragment() , OnItemClicked {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
 
-        binding.eventsRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.eventsRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        val retrofitBuilder =
+            Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
+                .addConverterFactory(GsonConverterFactory.create()).build()
 
-        val request=retrofitBuilder.create(RetrofitInterface::class.java)
-        val call =request.EventGetData()
+        val request = retrofitBuilder.create(RetrofitInterface::class.java)
+        val call = request.EventGetData()
 
         call.enqueue(object : Callback<List<EventDataClassItem>?> {
             override fun onResponse(
                 call: Call<List<EventDataClassItem>?>,
                 response: Response<List<EventDataClassItem>?>
             ) {
-                Log.d("checking",response.body().toString())
-                if(response.isSuccessful){
-                    val eventList=response.body()
-                    binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!,this@HomeFragment)
+                if (response.isSuccessful) {
+                    val eventList = response.body()
+                    binding.eventsRecyclerView.adapter =
+                        EventsAdapter(eventList!!, context!!, this@HomeFragment)
                 }
             }
 
@@ -139,9 +141,10 @@ class HomeFragment : Fragment() , OnItemClicked {
         return binding.root
     }
 
-fun OnEventclicked(position: Int) {
-        val intent= Intent(context, EventsDetActivity::class.java)
-        intent.putExtra("position",position)
+
+    fun OnEventclicked(position: Int) {
+        val intent = Intent(context, EventsDetActivity::class.java)
+        intent.putExtra("position", position)
         startActivity(intent)
     }
 }
