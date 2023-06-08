@@ -71,7 +71,11 @@ class FourthYearFragment : Fragment(), OnItemClicked {
                     //for heads
                     binding.apply {
                         binding.teamHeadRecyclerView.adapter =
-                            TeamFouthRecyclerAdapter(headArrayList, context!!,this@FourthYearFragment)
+                            TeamFouthRecyclerAdapter(
+                                headArrayList,
+                                context!!,
+                                this@FourthYearFragment
+                            )
                         teamHeadRecyclerView.set3DItem(true)
                         teamHeadRecyclerView.setAlpha(true)
                         teamHeadRecyclerView.setInfinite(true)
@@ -114,9 +118,14 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
+            gotoURL(membersList[position].github)
 
         }
         dialog.show()
+    }
+
+    private fun gotoURL(github: String) {
+
     }
 
     override fun headClickedItem(position: Int) {
@@ -135,9 +144,9 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, headArrayList[position].github, Toast.LENGTH_SHORT).show()
-
         }
         dialog.show()
     }
+    
 
 }

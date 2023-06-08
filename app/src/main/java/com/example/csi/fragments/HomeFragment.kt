@@ -56,7 +56,6 @@ class HomeFragment : Fragment() , OnItemClicked {
                 call: Call<List<EventDataClassItem>?>,
                 response: Response<List<EventDataClassItem>?>
             ) {
-                Log.d("checking",response.body().toString())
                 if(response.isSuccessful){
                     val eventList=response.body()
                     binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!,this@HomeFragment)
@@ -144,4 +143,5 @@ fun OnEventclicked(position: Int) {
         intent.putExtra("position",position)
         startActivity(intent)
     }
+
 }

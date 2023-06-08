@@ -18,29 +18,29 @@ class LoginActivity : AppCompatActivity() {
         binding= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-binding.button.setOnClickListener {
-
-    val retrofitBuilder=Retrofit.Builder().baseUrl("https://time-table-production.up.railway.app/")
-        .addConverterFactory(GsonConverterFactory.create()).build()
-
-    val request=retrofitBuilder.create(LoginInterface::class.java)
-    val obj=LoginDataClass("divyanshu21153090@akgec.ac.in","#string123")
-    val call=request.sendData(obj)
-    call.enqueue(object:Callback<LoginResponseDataClass>{
-        override fun onResponse(
-            call: Call<LoginResponseDataClass>,
-            response: Response<LoginResponseDataClass>
-        ) {
-            Log.d("meow",response.body().toString())
-        }
-
-        override fun onFailure(call: Call<LoginResponseDataClass>, t: Throwable) {
-            Toast.makeText(this@LoginActivity, "failed", Toast.LENGTH_SHORT).show()
-        }
-    })
-
-}
-
+//binding.button.setOnClickListener {
+//
+//    val retrofitBuilder=Retrofit.Builder().baseUrl("https://time-table-production.up.railway.app/")
+//        .addConverterFactory(GsonConverterFactory.create()).build()
+//
+//    val request=retrofitBuilder.create(LoginInterface::class.java)
+//    val obj=LoginDataClass("divyanshu21153090@akgec.ac.in","#string123")
+//    val call=request.sendData(obj)
+//    call.enqueue(object:Callback<LoginResponseDataClass>{
+//        override fun onResponse(
+//            call: Call<LoginResponseDataClass>,
+//            response: Response<LoginResponseDataClass>
+//        ) {
+//            Log.d("meow",response.body().toString())
+//        }
+//
+//        override fun onFailure(call: Call<LoginResponseDataClass>, t: Throwable) {
+//            Toast.makeText(this@LoginActivity, "failed", Toast.LENGTH_SHORT).show()
+//        }
+//    })
+//
+//}
+//
 
     }
 }
