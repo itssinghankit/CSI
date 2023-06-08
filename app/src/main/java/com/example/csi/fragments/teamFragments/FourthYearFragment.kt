@@ -118,9 +118,14 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
             Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
+            gotoURL(membersList[position].github)
 
         }
         dialog.show()
+    }
+
+    private fun gotoURL(github: String) {
+
     }
 
     override fun headClickedItem(position: Int) {
@@ -142,5 +147,6 @@ class FourthYearFragment : Fragment(), OnItemClicked {
         }
         dialog.show()
     }
+    
 
 }
