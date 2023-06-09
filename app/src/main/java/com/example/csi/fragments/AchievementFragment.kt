@@ -23,13 +23,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class AchievementFragment : Fragment(), onItemClicked {
 
     private lateinit var binding: FragmentAchievementBinding
-
     private lateinit var achievementList:List<AchievementsDataClassItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

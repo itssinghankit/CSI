@@ -6,6 +6,7 @@
 
     <string name="welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_welcome_to_our_new_hotel_booking_app_to_you_and_this_is_the_best_way_to_book_your_app_so_book_your_hotel">welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and welcome to our new hotel booking app to you and . this is the best way to book your app so book your hotel</string>
 
+
     <string name="title_activity_achievement_det">AchievementDetActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

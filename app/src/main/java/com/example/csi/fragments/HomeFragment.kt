@@ -1,28 +1,36 @@
 package com.example.csi.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.widget.Toast
-import com.example.csi.Interfaces.RetrofitInterface
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.csi.Adapters.DomainsAdapter
 import com.example.csi.Adapters.EventsAdapter
+import com.example.csi.Adapters.onItemClicked
+import com.example.csi.EventsDetActivity
+import com.example.csi.Interfaces.OnItemClicked
+import com.example.csi.Interfaces.RetrofitInterface
+
 import com.example.csi.R
 import com.example.csi.databinding.FragmentHomeBinding
 import com.example.csi.modelclasses.Domains
 import com.example.csi.modelclasses.EventDataClassItem
 import com.example.csi.modelclasses.HomeEvents
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class HomeFragment : Fragment() {
+
+
+class HomeFragment : Fragment() , OnItemClicked {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var eventArrayList: ArrayList<HomeEvents>
@@ -50,7 +58,7 @@ class HomeFragment : Fragment() {
             ) {
                 if(response.isSuccessful){
                     val eventList=response.body()
-                    binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!)
+                    binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!,this@HomeFragment)
                 }
             }
 
@@ -58,6 +66,36 @@ class HomeFragment : Fragment() {
                 Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show()
             }
         })
+
+
+
+        eventArrayList = ArrayList()
+        eventArrayList.add(
+            HomeEvents(
+                "Carnivals",
+                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
+            )
+        )
+        eventArrayList.add(
+            HomeEvents(
+                "Carnivals",
+                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
+            )
+        )
+        eventArrayList.add(
+            HomeEvents(
+                "Carnivals",
+                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
+            )
+        )
+        eventArrayList.add(
+            HomeEvents(
+                "Carnivals",
+                "i am very happy to attend this event as i am the only one to ettand this event so i won and got crore rupees now i am richer than ambamni"
+            )
+        )
+
+
 
         DomainsArrayList = ArrayList()
         DomainsArrayList.add(
@@ -98,6 +136,12 @@ class HomeFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+fun OnEventclicked(position: Int) {
+        val intent= Intent(context, EventsDetActivity::class.java)
+        intent.putExtra("position",position)
+        startActivity(intent)
     }
 
 }
