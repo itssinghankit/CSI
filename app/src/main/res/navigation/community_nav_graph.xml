@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/communitySignupFragment"
-        android:name="com.example.csi.fragments.CommunitySignupFragment"
+        android:name="com.example.csi.fragments.communuityFragments.CommunitySignupFragment"
         android:label="fragment_community_signup"
         tools:layout="@layout/fragment_community_signup" >
         <action
