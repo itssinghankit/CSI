@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_communityLoginFragment_to_communitySignupFragment"
             app:destination="@id/communitySignupFragment" />
-        <action
-            android:id="@+id/action_communityLoginFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
     </fragment>
     <fragment
         android:id="@+id/communitySignupFragment"
@@ -23,16 +20,19 @@
         android:label="fragment_community_signup"
         tools:layout="@layout/fragment_community_signup" >
         <action
-            android:id="@+id/action_communitySignupFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
+            android:id="@+id/action_communitySignupFragment_to_communitySignupDetFragment"
+            app:destination="@id/communitySignupDetFragment" />
+        <action
+            android:id="@+id/action_communitySignupFragment_to_communityLoginFragment"
+            app:destination="@id/communityLoginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/feedFragment"
-        android:name="com.example.csi.fragments.communuityFragments.FeedFragment"
-        android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" >
+        android:id="@+id/communitySignupDetFragment"
+        android:name="com.example.csi.fragments.communuityFragments.CommunitySignupDetFragment"
+        android:label="fragment_community_signup_det"
+        tools:layout="@layout/fragment_community_signup_det" >
         <action
-            android:id="@+id/action_feedFragment_to_communityLoginFragment"
+            android:id="@+id/action_communitySignupDetFragment_to_communityLoginFragment"
             app:destination="@id/communityLoginFragment" />
     </fragment>
 </navigation>

@@ -35,20 +35,18 @@ class FeedFragment : Fragment() {
     ): View? {
         binding= FragmentFeedBinding.inflate(layoutInflater)
 
-        val sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
 
-        if (sharedPreferences.getString("Authorization","")==""){
-            Toast.makeText(context, "not signed in", Toast.LENGTH_SHORT).show()
-           val intent=Intent(context,LoginActivity::class.java)
-            startActivity(intent)
-        }else{
-            Toast.makeText(context, sharedPreferences.getString("Authorization",""), Toast.LENGTH_SHORT).show()
-        }
 
+        //checking if the shared preference details exist or not(for first time user)
+        sharedPrefCheckStart()
+        Log.d("meowww","1")
+
+        //checking if the Authorization header is valid or not
+        var sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
 
         val service=RetrofitServiceBuilder.buildService(RetrofitInterface::class.java)
+        val requestCall=service.communityIsSignedIn(sharedPreferences.getString("Authorization","")!!)
 
-        val requestCall=service.communityIsSignedIn()
        requestCall.enqueue(object : Callback<CommunityIsSignedInDataClass?> {
            override fun onResponse(
                call: Call<CommunityIsSignedInDataClass?>,
@@ -57,12 +55,20 @@ class FeedFragment : Fragment() {
                if (response.isSuccessful){
                    Log.d("meow",response.code().toString())
                }else{
-                   Log.d("meow",response.body().toString())
+                  //if the header is not valid, delete previous shared preference and move again to login page
+
+                   sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
+                   sharedPreferences.edit().putString("Authorization","").apply()
+
+                   val intent=Intent(context,LoginActivity::class.java)
+                   startActivity(intent)
+
+
                }
            }
 
            override fun onFailure(call: Call<CommunityIsSignedInDataClass?>, t: Throwable) {
-               Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+               Toast.makeText(context, "Check Your Network", Toast.LENGTH_SHORT).show()
            }
        })
 
@@ -99,4 +105,35 @@ class FeedFragment : Fragment() {
         return binding.root
     }
 
-}
+    fun sharedPrefCheckStart(){
+        Log.d("meowww","2")
+        //checking if user is already signedin or not
+        val sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+        if (sharedPreferences.getString("Authorization","")==""){
+            Toast.makeText(context, "not signed in", Toast.LENGTH_SHORT).show()
+            val intent=Intent(context,LoginActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(context, sharedPreferences.getString("Authorization",""), Toast.LENGTH_SHORT).show()
+        }
+
+    }
+    }
+
+//    override fun onStart() {
+//        super.onStart()
+//        Log.d("meowww","2")
+//        //checking if user is already signedin or not
+//        val sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
+//
+//        if (sharedPreferences.getString("Authorization","")==""){
+//            Toast.makeText(context, "not signed in", Toast.LENGTH_SHORT).show()
+//            val intent=Intent(context,LoginActivity::class.java)
+//            startActivity(intent)
+//        }else{
+//            Toast.makeText(context, sharedPreferences.getString("Authorization",""), Toast.LENGTH_SHORT).show()
+//        }
+//
+//    }
+//}

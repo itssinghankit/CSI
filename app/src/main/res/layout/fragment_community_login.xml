@@ -13,6 +13,7 @@
         android:layout_height="@dimen/_150sdp"
         android:background="@drawable/login_bg"
         android:clipToOutline="true"
+        android:foreground="#98003399"
         android:outlineProvider="background"
         android:scaleType="centerCrop"
         android:src="@drawable/aboutus"
@@ -144,6 +145,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_10ssp"
         android:layout_marginBottom="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_19sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

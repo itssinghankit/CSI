@@ -5,17 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import com.example.csi.R
+import com.example.csi.databinding.FragmentCommunitySignupDetBinding
 
 
 class CommunitySignupDetFragment : Fragment() {
+    private lateinit var binding:FragmentCommunitySignupDetBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community_signup_det, container, false)
+        binding= FragmentCommunitySignupDetBinding.inflate(layoutInflater)
+
+        val arrayList= listOf("CSE","CS-IT","CSE(AIML)","CSE(DS)","CS","IT","ECE","ME","CE","EN")
+        val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_spinner_dropdown_item,arrayList)
+        binding.branch.adapter=adapter
+
+        return binding.root
     }
 
 }

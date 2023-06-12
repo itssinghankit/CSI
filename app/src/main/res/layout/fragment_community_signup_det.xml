@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragments.communuityFragments.CommunitySignupDetFragment">
 
     <ScrollView
@@ -20,6 +21,7 @@
                 android:layout_height="@dimen/_150sdp"
                 android:background="@drawable/login_bg"
                 android:clipToOutline="true"
+                android:foreground="#98003399"
                 android:outlineProvider="background"
                 android:scaleType="centerCrop"
                 android:src="@drawable/aboutus"
@@ -139,45 +141,103 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--            <com.google.android.material.button.MaterialButton-->
-            <!--                android:id="@+id/next"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/_45sdp"-->
-            <!--                android:layout_marginStart="@dimen/_19sdp"-->
-            <!--                android:layout_marginEnd="@dimen/_19sdp"-->
-            <!--                android:layout_marginBottom="24dp"-->
-            <!--                android:backgroundTint="@color/darkblue"-->
-            <!--                android:text="next"-->
-            <!--                android:textColor="@color/white"-->
-            <!--                app:layout_constraintBottom_toTopOf="@+id/already_txt"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintHorizontal_bias="0.0"-->
-            <!--                app:layout_constraintStart_toStartOf="parent" />-->
+            <Spinner
+                android:id="@+id/branch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_19sdp"
+                android:backgroundTint="@color/txtgrey"
+                android:padding="@dimen/_19sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stu_no_container" />
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/already_txt"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:fontFamily="@font/montserrat_regular"-->
-            <!--                android:text="Already have an Account?"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textSize="@dimen/_10ssp"-->
-            <!--                android:layout_marginBottom="@dimen/_25sdp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent" />-->
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_19sdp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/branch">
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/signin"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:fontFamily="@font/montserrat_semibold"-->
-            <!--                android:text=" Signin"-->
-            <!--                android:textColor="@color/blue"-->
-            <!--                android:textSize="@dimen/_10ssp"-->
-            <!--                android:layout_marginBottom="@dimen/_25sdp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintStart_toEndOf="@id/already_txt"/>-->
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textColor="@color/txtgrey"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:text="Female"
+                    android:textColor="@color/txtgrey"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_19sdp"
+                    android:text="Other"
+                    android:textColor="@color/txtgrey"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RadioGroup>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/signup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_19sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_19sdp"
+                android:backgroundTint="@color/darkblue"
+                android:text="signup"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gender" />
+
+            <TextView
+                android:id="@+id/already_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:layout_marginEnd="@dimen/_19sdp"
+                android:layout_marginBottom="@dimen/_25sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Already have an Account?"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signup" />
+
+            <TextView
+                android:id="@+id/signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:layout_marginBottom="@dimen/_25sdp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text=" Signin"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/already_txt"
+                app:layout_constraintTop_toBottomOf="@id/signup" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
