@@ -1,60 +1,102 @@
 package com.example.csi.fragments.communuityFragments
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
+import android.view.Display.Mode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.csi.Interfaces.RetrofitInterface
+import com.example.csi.LoginActivity
 import com.example.csi.R
+import com.example.csi.databinding.FragmentFeedBinding
+import com.example.csi.modelclasses.CommunityIsSignedInDataClass
+import com.example.csi.service.RetrofitServiceBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FeedFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FeedFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+ private lateinit var binding:FragmentFeedBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feed, container, false)
+        binding= FragmentFeedBinding.inflate(layoutInflater)
+
+        val sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+        if (sharedPreferences.getString("Authorization","")==""){
+            Toast.makeText(context, "not signed in", Toast.LENGTH_SHORT).show()
+           val intent=Intent(context,LoginActivity::class.java)
+            startActivity(intent)
+        }else{
+            Toast.makeText(context, sharedPreferences.getString("Authorization",""), Toast.LENGTH_SHORT).show()
+        }
+
+
+        val service=RetrofitServiceBuilder.buildService(RetrofitInterface::class.java)
+
+        val requestCall=service.communityIsSignedIn()
+       requestCall.enqueue(object : Callback<CommunityIsSignedInDataClass?> {
+           override fun onResponse(
+               call: Call<CommunityIsSignedInDataClass?>,
+               response: Response<CommunityIsSignedInDataClass?>
+           ) {
+               if (response.isSuccessful){
+                   Log.d("meow",response.code().toString())
+               }else{
+                   Log.d("meow",response.body().toString())
+               }
+           }
+
+           override fun onFailure(call: Call<CommunityIsSignedInDataClass?>, t: Throwable) {
+               Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+           }
+       })
+
+//        GlobalScope.launch{
+//        }
+
+//        requestCall.enqueue(object : Callback<CommunityIsSignedInDataClass?> {
+//            override fun onResponse(
+//                call: Call<CommunityIsSignedInDataClass?>,
+//                response: Response<CommunityIsSignedInDataClass?>
+//            ) {
+//                Log.d("meow",response.body().toString())
+//            }
+//
+//            override fun onFailure(call: Call<CommunityIsSignedInDataClass?>, t: Throwable) {
+//                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+
+//        Log.d("meow",requestCall.body().toString())
+        
+//        requestCall.enqueue(object : Callback<ResponseBody?> {
+//            override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
+//                Log.d("meow" ,response.body().toString())
+//            }
+//
+//            override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
+//                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FeedFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FeedFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

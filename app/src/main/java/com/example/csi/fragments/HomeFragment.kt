@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.csi.Adapters.DomainsAdapter
 import com.example.csi.Adapters.EventsAdapter
+import com.example.csi.Adapters.OnEventClicked
 import com.example.csi.Adapters.onItemClicked
 import com.example.csi.EventsDetActivity
 import com.example.csi.Interfaces.OnItemClicked
@@ -30,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 
-class HomeFragment : Fragment() , OnItemClicked {
+class HomeFragment : Fragment() , OnItemClicked, OnEventClicked {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var eventArrayList: ArrayList<HomeEvents>
@@ -141,8 +142,7 @@ class HomeFragment : Fragment() , OnItemClicked {
         return binding.root
     }
 
-
-    fun OnEventclicked(position: Int) {
+    override fun onEventclicked(position: Int) {
         val intent = Intent(context, EventsDetActivity::class.java)
         intent.putExtra("position", position)
         startActivity(intent)

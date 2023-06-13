@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/community_nav_graph"
+    app:startDestination="@id/communityLoginFragment">
+
+    <fragment
+        android:id="@+id/communityLoginFragment"
+        android:name="com.example.csi.fragments.communuityFragments.CommunityLoginFragment"
+        android:label="fragment_community_login"
+        tools:layout="@layout/fragment_community_login" >
+        <action
+            android:id="@+id/action_communityLoginFragment_to_communitySignupFragment"
+            app:destination="@id/communitySignupFragment" />
+        <action
+            android:id="@+id/action_communityLoginFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/communitySignupFragment"
+        android:name="com.example.csi.fragments.CommunitySignupFragment"
+        android:label="fragment_community_signup"
+        tools:layout="@layout/fragment_community_signup" >
+        <action
+            android:id="@+id/action_communitySignupFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.example.csi.fragments.communuityFragments.FeedFragment"
+        android:label="fragment_feed"
+        tools:layout="@layout/fragment_feed" >
+        <action
+            android:id="@+id/action_feedFragment_to_communityLoginFragment"
+            app:destination="@id/communityLoginFragment" />
+    </fragment>
+</navigation>
