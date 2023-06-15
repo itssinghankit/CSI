@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.csi.Adapters.DomainsAdapter
 import com.example.csi.Adapters.EventsAdapter
+import com.example.csi.Adapters.OnEventClicked
 import com.example.csi.Adapters.onItemClicked
 import com.example.csi.EventsDetActivity
 import com.example.csi.Interfaces.OnItemClicked
@@ -30,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 
-class HomeFragment : Fragment() , OnItemClicked {
+class HomeFragment : Fragment() , OnItemClicked, OnEventClicked {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var eventArrayList: ArrayList<HomeEvents>
@@ -43,22 +44,25 @@ class HomeFragment : Fragment() , OnItemClicked {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
 
-        binding.eventsRecyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.eventsRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        val retrofitBuilder= Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
-            .addConverterFactory(GsonConverterFactory.create()).build()
+        val retrofitBuilder =
+            Retrofit.Builder().baseUrl("https://csi-website-backend.onrender.com/")
+                .addConverterFactory(GsonConverterFactory.create()).build()
 
-        val request=retrofitBuilder.create(RetrofitInterface::class.java)
-        val call =request.EventGetData()
+        val request = retrofitBuilder.create(RetrofitInterface::class.java)
+        val call = request.EventGetData()
 
         call.enqueue(object : Callback<List<EventDataClassItem>?> {
             override fun onResponse(
                 call: Call<List<EventDataClassItem>?>,
                 response: Response<List<EventDataClassItem>?>
             ) {
-                if(response.isSuccessful){
-                    val eventList=response.body()
-                    binding.eventsRecyclerView.adapter=EventsAdapter(eventList!!,context!!,this@HomeFragment)
+                if (response.isSuccessful) {
+                    val eventList = response.body()
+                    binding.eventsRecyclerView.adapter =
+                        EventsAdapter(eventList!!, context!!, this@HomeFragment)
                 }
             }
 
@@ -138,10 +142,9 @@ class HomeFragment : Fragment() , OnItemClicked {
         return binding.root
     }
 
-fun OnEventclicked(position: Int) {
-        val intent= Intent(context, EventsDetActivity::class.java)
-        intent.putExtra("position",position)
+    override fun onEventclicked(position: Int) {
+        val intent = Intent(context, EventsDetActivity::class.java)
+        intent.putExtra("position", position)
         startActivity(intent)
     }
-
 }

@@ -16,7 +16,7 @@ import com.example.csi.modelclasses.EventDataClassItem
 class EventsAdapter(
     val arrayList: List<EventDataClassItem>,
     val context:Context,
-    val listeners: HomeFragment
+    val listeners: OnEventClicked
 ): RecyclerView.Adapter<EventsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val eventName=itemView.findViewById<TextView>(R.id.eventName)
@@ -28,7 +28,7 @@ class EventsAdapter(
         val view=LayoutInflater.from(parent.context).inflate(R.layout.events_recycler_items,parent,false)
         val viewHolder=ViewHolder(view)
         view.setOnClickListener {
-            listeners.OnEventclicked(viewHolder.adapterPosition)
+            listeners.onEventclicked(viewHolder.adapterPosition)
         }
         return viewHolder
 
@@ -49,8 +49,9 @@ class EventsAdapter(
     }
 
 }
-interface OnItemClicked {
-    fun OnEventclicked(position: Int){
+
+interface OnEventClicked {
+    fun onEventclicked(position: Int){
 
     }
 }
