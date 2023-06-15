@@ -29,10 +29,10 @@ class FeedFragment : Fragment() {
     ): View? {
         binding= FragmentFeedBinding.inflate(layoutInflater)
 
-        //checking if the shared preference details exist or not(for first time user)
+        //checking if the shared preference det exists or not (for first time user)
         sharedPrefCheckStart()
 
-        //checking if the Authorization header is valid or not
+        //checking if the Authorization Access token is valid or not
         isAuthDetCrt()
 
         return binding.root

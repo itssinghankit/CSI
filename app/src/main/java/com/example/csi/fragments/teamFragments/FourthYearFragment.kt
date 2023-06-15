@@ -1,9 +1,12 @@
 package com.example.csi.fragments.teamFragments
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -111,21 +114,14 @@ class FourthYearFragment : Fragment(), OnItemClicked {
             .into(dialog.findViewById(R.id.personImage))
 
         dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
-            Toast.makeText(context, membersList[position].linkedin, Toast.LENGTH_SHORT).show()
+            openLinkInApp(membersList[position].linkedin)
         }
         dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
-            Toast.makeText(context, membersList[position].Insta, Toast.LENGTH_SHORT).show()
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
-            Toast.makeText(context, membersList[position].github, Toast.LENGTH_SHORT).show()
-            gotoURL(membersList[position].github)
-
+            openLinkInApp(membersList[position].github)
         }
         dialog.show()
-    }
-
-    private fun gotoURL(github: String) {
-
     }
 
     override fun headClickedItem(position: Int) {
@@ -137,16 +133,26 @@ class FourthYearFragment : Fragment(), OnItemClicked {
             .into(dialog.findViewById(R.id.personImage))
 
         dialog.findViewById<ImageView>(R.id.linkedin).setOnClickListener {
-            Toast.makeText(context, headArrayList[position].linkedin, Toast.LENGTH_SHORT).show()
+            openLinkInApp(headArrayList[position].linkedin)
         }
         dialog.findViewById<ImageView>(R.id.instagram).setOnClickListener {
-            Toast.makeText(context, headArrayList[position].Insta, Toast.LENGTH_SHORT).show()
+            openLinkInApp(headArrayList[position].Insta)
         }
         dialog.findViewById<ImageView>(R.id.github).setOnClickListener {
-            Toast.makeText(context, headArrayList[position].github, Toast.LENGTH_SHORT).show()
+            openLinkInApp(headArrayList[position].github)
         }
         dialog.show()
     }
-    
+
+    fun openLinkInApp(url: String) {
+
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+
+        // Verify that there is an app available to handle the intent
+//        if (intent.resolveActivity(requireContext().packageManager) != null) {
+//            startActivity(intent)
+//        }
+    }
 
 }
