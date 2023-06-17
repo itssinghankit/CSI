@@ -35,7 +35,7 @@
         app:layout_constraintTop_toTopOf="@id/blueLine"
         app:layout_constraintEnd_toEndOf="@id/blueLine"
         android:textColor="@color/darkblue"
-        android:fontFamily="@font/montserrat_semibold"
+        android:fontFamily="git@font/montserrat_semibold"
         android:layout_marginEnd="@dimen/_37sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
