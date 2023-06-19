@@ -161,7 +161,7 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_6sdp"
             android:gravity="end"
-            android:background="@drawable/domain_bg"
+            android:background="@drawable/curved_rectangle"
             android:maxLines="1"
             android:textSize="@dimen/_9ssp"
             android:text="Frontend dev"
