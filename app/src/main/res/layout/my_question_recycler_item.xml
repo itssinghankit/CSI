@@ -3,23 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/_8sdp"
-    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_marginStart="@dimen/_12sdp"
+    android:layout_marginEnd="@dimen/_12sdp"
     android:background="@color/white"
-    android:elevation="@dimen/_4sdp"
+    app:strokeColor="@color/grey"
+    app:strokeWidth="1dp"
     app:cardCornerRadius="8dp"
-    app:cardUseCompatPadding="true">
+   android:layout_marginTop="@dimen/_8sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <TextView
             android:id="@+id/questionIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_19sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:fontFamily="@font/montserrat_semibold"
             android:maxLines="3"
@@ -35,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_8sdp"
             android:ellipsize="end"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_19sdp"
             android:fontFamily="@font/montserrat_semibold"
             android:justificationMode="inter_word"
             android:maxLines="8"
@@ -49,7 +51,7 @@
         <View
             android:id="@+id/line1"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_marginTop="@dimen/_19sdp"
             android:background="@color/linecolor"
             app:layout_constraintEnd_toEndOf="parent"
