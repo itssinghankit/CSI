@@ -37,6 +37,7 @@ interface RetrofitInterface {
      @POST("accounts/login/")
      fun signedIn(@Body requestBody: CommunitySigninRequestDataClass):Call<CommunityAfterSigninDataClass>
 
-
+    @GET("community/my_questions/")
+    fun myQuestions(@Header("Authorization")token:String):Call<List<CommunityMyQuesDataClassItem>>
 
 }

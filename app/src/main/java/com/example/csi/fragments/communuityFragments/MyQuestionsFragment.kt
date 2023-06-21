@@ -1,60 +1,69 @@
 package com.example.csi.fragments.communuityFragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.csi.Adapters.CommunityMyQuestionsAdapter
+import com.example.csi.Adapters.EventsAdapter
+import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.R
+import com.example.csi.databinding.FragmentCommunitySignupBinding
+import com.example.csi.databinding.FragmentMyQuestionsBinding
+import com.example.csi.modelclasses.CommunityMyQuesDataClass
+import com.example.csi.modelclasses.CommunityMyQuesDataClassItem
+import com.example.csi.service.RetrofitServiceBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyQuestionsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyQuestionsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentMyQuestionsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_questions, container, false)
+        binding= FragmentMyQuestionsBinding.inflate(layoutInflater)
+
+        binding.recyclerView.layoutManager=LinearLayoutManager(context)
+
+        fetchQuestions()
+
+        return binding.root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyQuestionsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyQuestionsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun fetchQuestions() {
+        val sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+        val call = RetrofitServiceBuilder.buildService(RetrofitInterface::class.java).myQuestions(sharedPreferences.getString("Authorization","")!!)
+
+        call.enqueue(object : Callback<List<CommunityMyQuesDataClassItem>?> {
+            override fun onResponse(
+                call: Call<List<CommunityMyQuesDataClassItem>?>,
+                response: Response<List<CommunityMyQuesDataClassItem>?>
+            ) {
+
+                if (response.isSuccessful) {
+                    val eventList = response.body()
+                    binding.recyclerView.adapter=CommunityMyQuestionsAdapter(eventList!!,context!!)
                 }
+
+                Log.d("meow",response.body().toString())
             }
+
+            override fun onFailure(call: Call<List<CommunityMyQuesDataClassItem>?>, t: Throwable) {
+                Toast.makeText(context, "Check Your Network", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
 }

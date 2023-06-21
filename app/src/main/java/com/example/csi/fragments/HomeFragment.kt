@@ -19,6 +19,7 @@ import com.example.csi.Interfaces.RetrofitInterface
 
 import com.example.csi.R
 import com.example.csi.databinding.FragmentHomeBinding
+import com.example.csi.modelclasses.CommunityMyQuesDataClassItem
 import com.example.csi.modelclasses.Domains
 import com.example.csi.modelclasses.EventDataClassItem
 import com.example.csi.modelclasses.HomeEvents
@@ -42,7 +43,6 @@ class HomeFragment : Fragment() , OnItemClicked, OnEventClicked {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
-
 
         binding.eventsRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
