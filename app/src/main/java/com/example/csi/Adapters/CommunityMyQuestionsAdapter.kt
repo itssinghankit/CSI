@@ -11,7 +11,7 @@ import com.example.csi.R
 import com.example.csi.modelclasses.CommunityMyQuesDataClassItem
 
 
-class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, val context: Context): RecyclerView.Adapter<CommunityMyQuestionsAdapter.ViewHolder>() {
+class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, val context: Context, val listener: onMyQuesItemClicked): RecyclerView.Adapter<CommunityMyQuestionsAdapter.ViewHolder>() {
    class  ViewHolder(itemView: View,listener:onMyQuesItemClicked) : RecyclerView.ViewHolder(itemView){
        val question = itemView.findViewById<TextView>(R.id.question)
        val edit=itemView.findViewById<ImageView>(R.id.edit)
@@ -29,7 +29,7 @@ class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, v
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.my_question_recycler_item,parent,false)
-        return ViewHolder(view,onMyQuesItemClicked)
+        return ViewHolder(view, listener)
     }
 
     override fun getItemCount(): Int {
@@ -44,10 +44,8 @@ class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, v
 interface onMyQuesItemClicked{
 
     fun onEditClicked(position: Int){
-
     }
     fun onDeleteClicked(position: Int){
-
     }
 
 }
