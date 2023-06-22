@@ -40,4 +40,7 @@ interface RetrofitInterface {
     @GET("community/my_questions/")
     fun myQuestions(@Header("Authorization")token:String):Call<List<CommunityMyQuesDataClassItem>>
 
+//    @GET("community/community_page/")
+//    fun FeedGetData():Call<List<>>
+
 }
