@@ -28,10 +28,14 @@
             android:name=".AchievementDetActivity"
             android:exported="false"
             android:label="@string/title_activity_achievement_det"
-            android:theme="@style/Theme.CSI.NoActionBar"></activity>
+            android:theme="@style/Theme.CSI.NoActionBar">
+
+        </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -40,9 +44,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- <meta-data -->
-            <!-- android:name="android.app.lib_name" -->
-            <!-- android:value="" /> -->
         </activity>
     </application>
 

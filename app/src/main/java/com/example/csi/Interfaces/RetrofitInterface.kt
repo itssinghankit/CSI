@@ -8,18 +8,12 @@ import com.example.csi.modelclasses.TeamDataClassItem
 
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface RetrofitInterface {
 
     @GET("api/postAchievementDetails")
     fun AchievementGetData(): Call<List<AchievementsDataClassItem>>
-
 
     @GET ("api/posteventDetails")
     fun EventGetData(): Call<List<EventDataClassItem>>
@@ -39,5 +33,12 @@ interface RetrofitInterface {
 
     @DELETE("/community/question_RUD/{id}")
     fun communityMyQuestionDelete(@Path("id")itemId:String, @Header("Authorization")token:String):Call<Void>
+
+    @POST("/community/question_create/")
+    fun communityQuestCreate(@Header("Authorization")token:String, @Body requestBody: CommunityQuesCreateUpdateReqDataClass):Call<CommunityQuesCreateUpdateRespDataClass>
+
+    @PATCH("/community/question_RUD/{id}")
+    fun communityQuesUpdate(@Header("Authorization")token:String,@Path("id") id: String, @Body requestBody:  CommunityQuesCreateUpdateReqDataClass): Call<CommunityQuesCreateUpdateRespDataClass>
+
 
 }

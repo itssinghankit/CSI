@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommunityQeusAddActivity"
-    android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_19sdp">
 
     <ImageView
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
-        app:layout_constraintBottom_toBottomOf="@id/add"
+        app:layout_constraintBottom_toBottomOf="@id/done"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/add"
+        app:layout_constraintTop_toTopOf="@id/done"
         app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/add"
+        android:id="@+id/done"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_37sdp"
         android:layout_marginTop="@dimen/_6sdp"
         android:layout_marginEnd="@dimen/_12sdp"
         android:backgroundTint="@color/darkblue"
-        android:text="ADD"
+        android:text="Done"
         android:textColor="@color/white"
         app:cornerRadius="@dimen/_19sdp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +36,7 @@
         android:background="@color/linecolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add" />
+        app:layout_constraintTop_toBottomOf="@id/done" />
 
     <ScrollView
         android:layout_width="match_parent"
