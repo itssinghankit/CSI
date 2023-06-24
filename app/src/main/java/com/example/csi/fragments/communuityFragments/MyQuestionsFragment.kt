@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -136,19 +137,37 @@ class MyQuestionsFragment : Fragment(), onMyQuesItemClicked{
     }
 
     override fun onEditClicked(position: Int) {
-
+        //set the edit dialog
         editDialog.setContentView(R.layout.community_myquestions_editquestion_dialog)
         editDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-
-        var domain = "FRONTEND"
-
+        val dialogspinner=editDialog.findViewById<Spinner>(R.id.domain)
         val arrayList = arrayListOf("FRONTEND", "BACKEND", "APP", "MACHINE LEARNING")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayList)
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayList)
         adapter.setDropDownViewResource(
             android.R.layout.simple_spinner_dropdown_item
         )
-        editDialog.findViewById<Spinner>(R.id.domain).adapter = adapter
+        dialogspinner.adapter= adapter
+
+        var domain = "FRONTEND"
+
+        dialogspinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                domain = parent?.getItemAtPosition(position).toString()
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                domain = "FRONTEND"
+            }
+
+        }
+
 
         val call = RetrofitServiceBuilder.buildService(RetrofitInterface::class.java).communityQuesUpdate(sharedPreferences.getString("Authorization", "")!!, quesList[position].id.toString(),
             CommunityQuesCreateUpdateReqDataClass()
