@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.csi.Adapters.CommunityMyQuestionsAdapter
 import com.example.csi.Adapters.EventsAdapter
+import com.example.csi.Adapters.onMyQuesItemClicked
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.R
 import com.example.csi.databinding.FragmentCommunitySignupBinding
@@ -24,7 +25,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class MyQuestionsFragment : Fragment() {
+class MyQuestionsFragment : Fragment(), onMyQuesItemClicked {
     private lateinit var binding: FragmentMyQuestionsBinding
 
     override fun onCreateView(
@@ -54,7 +55,7 @@ class MyQuestionsFragment : Fragment() {
 
                 if (response.isSuccessful) {
                     val eventList = response.body()
-                    binding.recyclerView.adapter=CommunityMyQuestionsAdapter(eventList!!,context!!)
+                    binding.recyclerView.adapter=CommunityMyQuestionsAdapter(eventList!!,context!!,this@MyQuestionsFragment)
                 }
 
                 Log.d("meow",response.body().toString())
@@ -64,6 +65,14 @@ class MyQuestionsFragment : Fragment() {
                 Toast.makeText(context, "Check Your Network", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    override fun onEditClicked(position: Int) {
+        Toast.makeText(context, "edit", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDeleteClicked(position: Int) {
+        Toast.makeText(context, "delete", Toast.LENGTH_SHORT).show()
     }
 
 }

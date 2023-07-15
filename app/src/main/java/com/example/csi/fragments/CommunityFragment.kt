@@ -23,7 +23,7 @@ private lateinit var binding:FragmentCommunityBinding
         TabLayoutMediator(binding.communityTabLayout,binding.communityViewPager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Feed"
+                    tab.text = "com.example.csi.modelclasses.Feed"
                 }
                 1 -> {
                     tab.text = "Questions"
