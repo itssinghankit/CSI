@@ -31,6 +31,11 @@ interface RetrofitInterface {
     @GET("community/my_questions/")
     fun communityMyQuestions(@Header("Authorization")token:String):Call<List<CommunityMyQuesDataClassItem>>
 
+
+
+    @GET("community/community_page/")
+    fun FeedGetData():Call<List<FeedItem>>
+
     @DELETE("/community/question_RUD/{id}")
     fun communityMyQuestionDelete(@Path("id")itemId:String, @Header("Authorization")token:String):Call<Void>
 
@@ -39,6 +44,7 @@ interface RetrofitInterface {
 
     @PATCH("/community/question_RUD/{id}")
     fun communityQuesUpdate(@Header("Authorization")token:String,@Path("id") id: String, @Body requestBody:  CommunityQuesCreateUpdateReqDataClass): Call<CommunityQuesCreateUpdateRespDataClass>
+
 
 
 }
