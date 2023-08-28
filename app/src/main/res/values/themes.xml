@@ -19,4 +19,11 @@
     </style>
     <style name="Theme.CSI.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.CSI.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    //for community myQuestions delete Dialog
+    <style name="CustomAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:background">@color/white</item>
+<!--        <item name="">@color/blue</item>-->
+    </style>
 </resources>
