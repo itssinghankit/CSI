@@ -1,51 +1,74 @@
 package com.example.csi.fragments.communuityFragments
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.csi.Adapters.CommunityMyQuestionsAdapter
-import com.example.csi.Adapters.EventsAdapter
 import com.example.csi.Adapters.onMyQuesItemClicked
+import com.example.csi.CommunityQeusAddActivity
 import com.example.csi.Interfaces.RetrofitInterface
 import com.example.csi.R
-import com.example.csi.databinding.FragmentCommunitySignupBinding
 import com.example.csi.databinding.FragmentMyQuestionsBinding
-import com.example.csi.modelclasses.CommunityMyQuesDataClass
 import com.example.csi.modelclasses.CommunityMyQuesDataClassItem
+import com.example.csi.modelclasses.CommunityQuesCreateUpdateReqDataClass
 import com.example.csi.service.RetrofitServiceBuilder
+import com.google.android.material.tabs.TabLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class MyQuestionsFragment : Fragment(), onMyQuesItemClicked {
+class MyQuestionsFragment : Fragment(), onMyQuesItemClicked{
     private lateinit var binding: FragmentMyQuestionsBinding
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var quesList: MutableList<CommunityMyQuesDataClassItem>
+    private lateinit var editDialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentMyQuestionsBinding.inflate(layoutInflater)
+        binding = FragmentMyQuestionsBinding.inflate(layoutInflater)
 
-        binding.recyclerView.layoutManager=LinearLayoutManager(context)
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
+        binding.add.setOnClickListener {
+            startActivity(Intent(requireContext(),CommunityQeusAddActivity::class.java))
+        }
 
         fetchQuestions()
+
+        //edit dialog popup
+        editDialog = Dialog(requireContext())
 
         return binding.root
 
     }
 
-    private fun fetchQuestions() {
-        val sharedPreferences=requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
 
-        val call = RetrofitServiceBuilder.buildService(RetrofitInterface::class.java).myQuestions(sharedPreferences.getString("Authorization","")!!)
+    private fun fetchQuestions() {
+        sharedPreferences = requireContext().getSharedPreferences("Login", Context.MODE_PRIVATE)
+
+        val call = RetrofitServiceBuilder.buildService(RetrofitInterface::class.java)
+            .communityMyQuestions(sharedPreferences.getString("Authorization", "")!!)
 
         call.enqueue(object : Callback<List<CommunityMyQuesDataClassItem>?> {
             override fun onResponse(
@@ -54,11 +77,12 @@ class MyQuestionsFragment : Fragment(), onMyQuesItemClicked {
             ) {
 
                 if (response.isSuccessful) {
-                    val eventList = response.body()
-                    binding.recyclerView.adapter=CommunityMyQuestionsAdapter(eventList!!,context!!,this@MyQuestionsFragment)
+                    quesList = (response.body() as MutableList<CommunityMyQuesDataClassItem>?)!!
+                    binding.recyclerView.adapter =
+                        CommunityMyQuestionsAdapter(quesList!!, context!!, this@MyQuestionsFragment)
                 }
 
-                Log.d("meow",response.body().toString())
+                Log.d("meow", response.body().toString())
             }
 
             override fun onFailure(call: Call<List<CommunityMyQuesDataClassItem>?>, t: Throwable) {
@@ -67,12 +91,91 @@ class MyQuestionsFragment : Fragment(), onMyQuesItemClicked {
         })
     }
 
+    private fun deleteQuesReq(position: Int) {
+        val call = RetrofitServiceBuilder.buildService(RetrofitInterface::class.java)
+            .communityMyQuestionDelete(
+                quesList[position].id.toString(),
+                sharedPreferences.getString("Authorization", "")!!
+            )
+        call.enqueue(object : Callback<Void?> {
+            override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(context, "Deleted Sucessfully", Toast.LENGTH_SHORT).show()
+                    quesList.removeAt(position)
+                    binding.recyclerView.adapter!!.notifyItemRemoved(position)
+                }
+            }
+
+            override fun onFailure(call: Call<Void?>, t: Throwable) {
+                Toast.makeText(context, "Check your Connection", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun showConfirmationDialog(position: Int) {
+
+        val dialogBuilder = AlertDialog.Builder(context, R.style.CustomAlertDialogStyle)
+        dialogBuilder.setMessage("Are you sure you want to delete?")
+
+        dialogBuilder.setPositiveButton("Yes") { dialog, which ->
+            //TODO:progressbar logic
+           deleteQuesReq(position)
+        }
+        dialogBuilder.setNegativeButton("No") { dialog, which ->
+            dialog.dismiss()
+        }
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+
+        val buttonYes = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+        val buttonNo = dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+
+        buttonYes?.setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+        buttonNo?.setTextColor(ContextCompat.getColor(requireContext(), R.color.blue))
+
+    }
+
     override fun onEditClicked(position: Int) {
-        Toast.makeText(context, "edit", Toast.LENGTH_SHORT).show()
+        //set the edit dialog
+        editDialog.setContentView(R.layout.community_myquestions_editquestion_dialog)
+        editDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val dialogspinner=editDialog.findViewById<Spinner>(R.id.domain)
+        val arrayList = arrayListOf("FRONTEND", "BACKEND", "APP", "MACHINE LEARNING")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayList)
+        adapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
+        dialogspinner.adapter= adapter
+
+        var domain = "FRONTEND"
+
+        dialogspinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                domain = parent?.getItemAtPosition(position).toString()
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                domain = "FRONTEND"
+            }
+
+        }
+
+
+        val call = RetrofitServiceBuilder.buildService(RetrofitInterface::class.java).communityQuesUpdate(sharedPreferences.getString("Authorization", "")!!, quesList[position].id.toString(),
+            CommunityQuesCreateUpdateReqDataClass()
+        )
     }
 
     override fun onDeleteClicked(position: Int) {
-        Toast.makeText(context, "delete", Toast.LENGTH_SHORT).show()
+        showConfirmationDialog(position)
     }
 
 }

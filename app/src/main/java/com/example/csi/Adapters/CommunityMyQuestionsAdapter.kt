@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.csi.R
@@ -16,6 +17,7 @@ class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, v
        val question = itemView.findViewById<TextView>(R.id.question)
        val edit=itemView.findViewById<ImageView>(R.id.edit)
        val delete=itemView.findViewById<ImageView>(R.id.delete)
+       val progressBar=itemView.findViewById<ProgressBar>(R.id.progresscircular)
 
        init {
            edit.setOnClickListener{
@@ -25,6 +27,7 @@ class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, v
                 listener.onDeleteClicked(adapterPosition)
            }
        }
+
    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,6 +42,7 @@ class CommunityMyQuestionsAdapter(val list:List<CommunityMyQuesDataClassItem>, v
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.question.text=list[position].body
     }
+
 }
 
 interface onMyQuesItemClicked{
@@ -46,6 +50,7 @@ interface onMyQuesItemClicked{
     fun onEditClicked(position: Int){
     }
     fun onDeleteClicked(position: Int){
+
     }
 
 }
